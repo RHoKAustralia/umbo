@@ -1,0 +1,19 @@
+addons:
+  postgresql: "10"
+  apt:
+    packages:
+    - postgresql-10
+    - postgresql-client-10
+env:
+  global:
+  - PGPORT=5433
+language: ruby
+rvm:
+  - 2.5.1
+script:
+  - bundle exec rails db:create RAILS_ENV=test
+  - bundle exec rails db:migrate RAILS_ENV=test
+  - bundle exec rails test
+services:
+  - postgresql
+  - redis-server

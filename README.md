@@ -1,4 +1,7 @@
 # Umbo
+
+[![Build Status](https://travis-ci.org/RHoKAustralia/umbo.svg?branch=master)](https://travis-ci.org/RHoKAustralia/umbo)
+
 ### Random Hacks of Kindness
 
 ## Requirements:
