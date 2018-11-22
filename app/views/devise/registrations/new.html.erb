@@ -1,0 +1,61 @@
+<div class="container max-width-300">
+  <div class="d-flex flex-column align-items-center text-center">
+
+    <h1 class="my-3 font-weight-normal">Sign up</h1>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "w-100"}) do |f| %>
+      <%= devise_error_messages! %>
+
+      <!--
+
+      <div class="form-group">
+        <%#= f.label :profile_image, class: "sr-only" %>
+        <div class="avatar-wrapper rounded-circle">
+          <%#= image_tag asset_path("fallback/defaultavatar.jpg"), class:"profile-pic" %>
+          <div class="upload-button">
+          </div>
+          <%#= f.file_field :profile_image, class: "file-upload" %>
+        </div>
+          <div class="d-flex justify-content-center height-0"><span id="plus-icon" class="text-success border-success"></span></div>
+      </div>
+
+      <div class="form-group">
+        <%#= f.label :first_name, class: "sr-only" %>
+        <%#= f.text_field :first_name, autofocus: true, placeholder: "First Name", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%#= f.label :last_name, class: "sr-only" %>
+        <%#= f.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
+      </div>
+
+      -->
+
+      <div class="form-group">
+        <%= f.label :email, class: "sr-only" %>
+        <%= f.email_field :email, autocomplete: "email", placeholder: "Email", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, class: "sr-only" %>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: "form-control" %>
+      </div>
+
+      <!-- Confirm Password field needed?
+
+      <div class="field">
+        <%#= f.label :password_confirmation %><br />
+        <%#= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+
+      -->
+
+      <div class="form-group">
+        <%= f.submit "Sign up", class: "btn btn-success form-control" %>
+      </div>
+
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

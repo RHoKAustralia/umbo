@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <%= link_to 'Umbo', root_path, class: "navbar-brand"%>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <ul class="navbar-nav ml-auto">
+      <% if user_signed_in? %>
+        <li class="nav-item my-auto ">
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-item nav-link my-auto" %>
+        </li>
+      <% else %>
+        <li class="nav-item my-auto ">
+          <%= link_to "Login", new_user_session_path, class: "nav-item nav-link my-auto" %>
+        </li>
+        <li class="nav-item my-auto ">
+          <%= link_to "Sign Up", new_user_registration_path, class: "nav-item nav-link my-auto" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
