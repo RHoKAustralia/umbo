@@ -8,4 +8,5 @@ script:
   - bundle exec rails db:migrate RAILS_ENV=test
   - bundle exec rails test
 services:
+  - postgresql
   - redis-server
