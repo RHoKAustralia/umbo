@@ -10,10 +10,77 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_22_094343) do
+ActiveRecord::Schema.define(version: 2018_11_23_225215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "patient_therapists", force: :cascade do |t|
+    t.bigint "patient_id"
+    t.bigint "therapist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["patient_id"], name: "index_patient_therapists_on_patient_id"
+    t.index ["therapist_id"], name: "index_patient_therapists_on_therapist_id"
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_patients_on_user_id"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.bigint "therapist_id"
+    t.date "day"
+    t.time "time"
+    t.boolean "available"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["therapist_id"], name: "index_schedules_on_therapist_id"
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.bigint "patient_id"
+    t.bigint "therapist_id"
+    t.date "date"
+    t.time "start_time"
+    t.time "end_time"
+    t.date "payment_date"
+    t.integer "total_cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["patient_id"], name: "index_sessions_on_patient_id"
+    t.index ["therapist_id"], name: "index_sessions_on_therapist_id"
+  end
+
+  create_table "specialties", force: :cascade do |t|
+    t.text "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "therapist_specialties", force: :cascade do |t|
+    t.bigint "therapist_id"
+    t.bigint "specialty_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["specialty_id"], name: "index_therapist_specialties_on_specialty_id"
+    t.index ["therapist_id"], name: "index_therapist_specialties_on_therapist_id"
+  end
+
+  create_table "therapists", force: :cascade do |t|
+    t.bigint "user_id"
+    t.text "about_me"
+    t.integer "hourly_rate"
+    t.string "profile_image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_therapists_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +90,21 @@ ActiveRecord::Schema.define(version: 2018_11_22_094343) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone"
+    t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "patient_therapists", "patients"
+  add_foreign_key "patient_therapists", "therapists"
+  add_foreign_key "patients", "users"
+  add_foreign_key "schedules", "therapists"
+  add_foreign_key "sessions", "patients"
+  add_foreign_key "sessions", "therapists"
+  add_foreign_key "therapist_specialties", "specialties"
+  add_foreign_key "therapist_specialties", "therapists"
+  add_foreign_key "therapists", "users"
 end
