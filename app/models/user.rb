@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :patients
   has_many :therapists
 
+protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :role, :profile_image])
