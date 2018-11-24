@@ -58,3 +58,7 @@ gem "devise", "~> 4.5"
 
 gem "textacular", "~> 5.1"
 gem "faker", "~> 1.9"
+
+gem "carrierwave", "~> 1.2"
+
+gem "mini_magick", "~> 4.9"
