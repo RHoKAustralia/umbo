@@ -14,3 +14,22 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+var ready = function() {
+  $(".btn-blue-toggle").on("click", function(event) {
+    console.log($(this).hasClass('btn-outline-primary'));
+    if ($(this).hasClass('btn-outline-primary')) {
+      $(this).removeClass('btn-outline-primary');
+      $(this).addClass('btn-primary');
+    } else {
+      $(this).removeClass('btn-primary');
+      $(this).addClass('btn-outline-primary');
+    }
+  });
+}
+
+// $(function() {
+//   ready();
+// });
+
+$(document).on('turbolinks:load', ready);
