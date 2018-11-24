@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_23_225215) do
+ActiveRecord::Schema.define(version: 2018_11_24_021821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,11 @@ ActiveRecord::Schema.define(version: 2018_11_23_225215) do
     t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "dob"
+    t.integer "gender"
+    t.boolean "ndis_status"
+    t.string "ndis_number"
+    t.string "postcode"
     t.index ["user_id"], name: "index_patients_on_user_id"
   end
 
@@ -70,6 +75,12 @@ ActiveRecord::Schema.define(version: 2018_11_23_225215) do
     t.datetime "updated_at", null: false
     t.index ["specialty_id"], name: "index_therapist_specialties_on_specialty_id"
     t.index ["therapist_id"], name: "index_therapist_specialties_on_therapist_id"
+  end
+
+  create_table "therapist_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "therapists", force: :cascade do |t|
