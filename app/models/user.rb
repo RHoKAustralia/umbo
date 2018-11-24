@@ -3,8 +3,8 @@
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :patients
-  has_many :therapists
+  has_one :patient
+  has_one :therapist
   
   enum role: ['admin', 'therapist', 'patient']
 protected
