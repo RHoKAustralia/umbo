@@ -1,13 +1,23 @@
 class PagesController < ApplicationController
+  before_action :check_signed_in, except: [:dashboard]
+
   def home
-    if user_signed_in?
-      redirect_to dashboard_path
-    end
   end
 
   def dashboard
-    # if current_user.therapist?
-    #   @user = Therapist.find(current_user.therapist.id)
-    # end
-  end 
+  end
+
+  private
+
+  def check_signed_in
+    if user_signed_in? and current_user.patient?
+      if current_user.patient.nil?
+        redirect_to new_patient_path
+      else
+        redirect_to dashboard_path
+      end
+    elsif user_signed_in? and current_user.therapist?
+      redirect_to edit_therapist_path
+    end
+  end
 end

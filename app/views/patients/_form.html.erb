@@ -1,0 +1,50 @@
+<div class="form-group">
+
+      <%= form_with(model: @patient, local: true) do |f| %>
+
+  
+      <div class="form-group">
+        <%= f.label :first_name, class: "sr-only" %>
+        <%= f.text_field :first_name, autofocus: true, placeholder: "First Name", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :last_name, class: "sr-only" %>
+        <%= f.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :gender, class: "sr-only" %>
+        <%= f.number_field :gender, placeholder: "Gender", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :dob, class: "sr-only" %>
+        <%= f.date_field :dob, placeholder: "Date of birth", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :ndis_status, class: "sr-only" %>
+        <%= f.text_field :ndis_status, placeholder: "Ndis Statsu", class: "form-control" %>
+      </div>
+       <div class="form-group">
+        <%= f.label :ndis_number, class: "sr-only" %>
+        <%= f.text_field :ndis_number, placeholder: "NDIS Number", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :postcode, class: "sr-only" %>
+        <%= f.number_field :postcode, placeholder: "postcode", class: "form-control" %>
+      </div>
+
+ <div class="form-group">
+        <%= f.submit "Sign up", class: "btn btn-success form-control" %>
+      </div>
+
+
+    <% end %>
+        
+      </div>
+
+
+
+
+
+
