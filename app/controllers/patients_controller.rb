@@ -24,9 +24,16 @@ class PatientsController < ApplicationController
   def create
     @patient = Patient.new(patient_params)
     @patient.user_id = current_user.id
-
+    saved = @patient.save
+    specialties = params[:patient][:specialties].delete_if { |v| v == "" }
+    specialties.each do |x|
+      patient_specialties = PatientSpecialty.new
+      patient_specialties.patient_id = @patient.id
+      patient_specialties.specialty_id = x
+      patient_specialties.save
+    end
     respond_to do |format|
-      if @patient.save
+      if saved
         format.html { redirect_to root_path, notice: "patient was successfully created." }
       else
         format.html { render :new }
@@ -64,6 +71,6 @@ class PatientsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def patient_params
-    params.require(:patient).permit(:user_id, :first_name, :last_name, :dob, :gender, :ndis_status, :ndis_number, :postcode)
+    params.require(:patient).permit(:user_id, :first_name, :last_name, :dob, :gender, :ndis_status, :ndis_number, :postcode, :specialties)
   end
 end

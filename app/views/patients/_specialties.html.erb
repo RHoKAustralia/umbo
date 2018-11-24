@@ -1,0 +1,89 @@
+<%= form_with(model: @patient, local: true) do |f| %>
+  
+
+   <div class="form-group">
+        <%= f.label :first_name, class: "sr-only" %>
+        <%= f.text_field :first_name, autofocus: true, placeholder: "First Name", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :last_name, class: "sr-only" %>
+        <%= f.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :gender, class: "sr-only" %>
+        <%= f.select(:gender, [["male", 'male'],["female", 'female']],{}, {class: "form-control"}) %>
+      </div>
+      <div class="form-group">
+        <%= f.label :dob, class: "sr-only" %>
+        <%= f.date_field :dob, placeholder: "Date of birth", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :ndis_status do%>
+        <p>NDIS approval</p>
+        <%end%>
+
+        <%= f.check_box :ndis_status, class: "" %>
+
+      </div>
+       <div class="form-group">
+        <%= f.label :ndis_number, class: "sr-only" %>
+        <%= f.number_field :ndis_number, placeholder: "NDIS Number", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :postcode, class: "sr-only" %>
+        <%= f.number_field :postcode, placeholder: "postcode", class: "form-control" %>
+      </div>
+
+ 
+
+  <%= f.collection_check_boxes(:specialties, Specialty.all, :id, :name ) do |f| %>
+    <div>
+      <%= f.check_box class: "sr-only" %>
+      <%# p f.check_box %>
+      <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    </div>
+  <%#= form.fields_for :specialties do |f| %>
+    <%# h3>Age Groups</h3> %>
+    <%#= f.label :adults, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <%#= f.check_box :adults, class: "sr-only" %>
+    <%#= f.label :children, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <%#= f.check_box :children, class: "sr-only" %>
+    <%# <h3>Disorder</h3> %>
+    <%#= f.label :development_delays, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <%#= f.check_box :development_delays, class: "sr-only" %>
+    <%#= f.label :cerebral_palsy, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <%#= f.check_box :cerebral_palsy, class: "sr-only" %>
+    <%#= f.label :autism, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <%#= f.check_box :autism, class: "sr-only" %>
+    <%#= f.label :down_syndrome, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <%#= f.check_box :down_syndrome, class: "sr-only" %>
+    <%# <h3>Speech</h3> %>
+    <%#= f.label :speech, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <%#= f.check_box :speech, class: "sr-only" %>
+    <%#= f.label :language_development, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <%#= f.check_box :language_development, class: "sr-only" %>
+    <%#= f.label :voice, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <%#= f.check_box :voice, class: "sr-only" %>
+    <%#= f.label :stuttering, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <%#= f.check_box :stuttering, class: "sr-only" %>
+    <%# <h3>Motor & Sensory</h3> %>
+    <%#= f.label :fine_motor_skills, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <%#= f.check_box :fine_motor_skills, class: "sr-only" %>
+    <%#= f.label :feeding_and_swallowing, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <%#= f.check_box :feeding_and_swallowing, class: "sr-only" %>
+    <%#= f.label :sensory_processing, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <%#= f.check_box :sensory_processing, class: "sr-only" %>
+    <%# <h3>Communication & Behaviour</h3> %>
+    <%#= f.label :literacy, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <%#= f.check_box :literacy, class: "sr-only" %>
+    <%#= f.label :behaviour_support, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <%#= f.check_box :behaviour_support, class: "sr-only" %>
+    <%#= f.label :aac_and_multimodal_communication, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <%#= f.check_box :aac_and_multimodal_communication, class: "sr-only" %>
+  <% end %>
+    <div class="form-group">
+        <%= f.submit "Sign up", class: "btn btn-success form-control" %>
+      </div>
+<% end %>
