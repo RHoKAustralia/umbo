@@ -1,11 +1,12 @@
 class SessionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_session, only: [:show, :edit, :update, :destroy]
+  before_action :set_therapist, only: [:new, :create, :index]
 
   # GET /sessions
   # GET /sessions.json
   def index
-    @sessions = Session.all
+    @sessions = Session.where(therapist_id: @therapist.id).includes(:therapist, :patient)
   end
 
   # GET /sessions/1
@@ -26,10 +27,12 @@ class SessionsController < ApplicationController
   # POST /sessions.json
   def create
     @session = Session.new(session_params)
+    @session.patient_id = current_user.id
+    @session.therapist_id = params[:therapist_id]
 
     respond_to do |format|
       if @session.save
-        format.html { redirect_to @session, notice: 'Session was successfully created.' }
+        format.html { redirect_to therapist_session_path(id: @session.id, therapist_id: @session.therapist_id), notice: 'Session was successfully created.' }
         format.json { render :show, status: :created, location: @session }
       else
         format.html { render :new }
@@ -55,9 +58,11 @@ class SessionsController < ApplicationController
   # DELETE /sessions/1
   # DELETE /sessions/1.json
   def destroy
+    p @session
+    byebug
     @session.destroy
     respond_to do |format|
-      format.html { redirect_to sessions_url, notice: 'Session was successfully destroyed.' }
+      format.html { redirect_to therapist_sessions_url(therapist_id: params[:therapist_id]), notice: 'Session was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -66,6 +71,10 @@ class SessionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_session
       @session = Session.find(params[:id])
+    end
+
+    def set_therapist
+      @therapist = Therapist.find(params[:therapist_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

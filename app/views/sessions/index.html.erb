@@ -2,7 +2,7 @@
 
 <h1>Sessions</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Patient</th>
@@ -19,16 +19,16 @@
   <tbody>
     <% @sessions.each do |session| %>
       <tr>
-        <td><%= session.patient %></td>
-        <td><%= session.therapist %></td>
-        <td><%= session.date %></td>
-        <td><%= session.start_time %></td>
-        <td><%= session.end_time %></td>
-        <td><%= session.payment_date %></td>
+        <td><%= session.patient.first_name %></td>
+        <td><%= session.therapist.user.first_name %></td>
+        <td><%= session.date.strftime("%d/%m/%Y") %></td>
+        <td><%= session.start_time.strftime("%l:%M%p") %></td>
+        <td><%= session.end_time.strftime("%l:%M%p") %></td>
+        <td><%= session.payment_date.strftime("%d/%m/%Y") %></td>
         <td><%= session.total_cost %></td>
-        <td><%= link_to 'Show', therapist_session_path(id: session.therapist_id) %></td>
-        <td><%= link_to 'Edit', edit_therapist_session_path(id: session.therapist_id) %></td>
-        <td><%= link_to 'Destroy', therapist_session_path(id: session.therapist_id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', therapist_session_path(id: session.id, therapist_id: session.therapist.id) %></td>
+        <td><%= link_to 'Edit', edit_therapist_session_path(id: session.id, therapist_id: session.therapist.id) %></td>
+        <td><%= link_to 'Destroy', therapist_session_path(id: session.id, therapist_id: session.therapist.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
