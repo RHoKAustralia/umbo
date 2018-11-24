@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'dashboard', to: 'pages#dashboard', as: 'dashboard'
   resources 'search', only: [:index]
-  resources 'therapists', only: [:show]
+  resources 'therapists'
   resources 'patients'
 end

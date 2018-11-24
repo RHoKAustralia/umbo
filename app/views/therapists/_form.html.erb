@@ -1,0 +1,42 @@
+<%= form_with(model: therapist, local: true) do |form| %>
+  <h3>Age Groups</h3>
+    <%= form.label :adults %>
+    <%= form.check_box :adults %>
+    <%= form.label :children %>
+    <%= form.check_box :children %>
+  <h3>Disorder</h3>
+    <%= form.label :development_delays %>
+    <%= form.check_box :development_delays %>
+    <%= form.label :cerebral_palsy %>
+    <%= form.check_box :cerebral_palsy %>
+    <%= form.label :autism %>
+    <%= form.check_box :autism %>
+    <%= form.label :down_syndrome %>
+    <%= form.check_box :down_syndrome %>
+  <h3>Speech</h3>
+    <%= form.label :speech %>
+    <%= form.check_box :speech %>
+    <%= form.label :language_development %>
+    <%= form.check_box :language_development %>
+    <%= form.label :voice %>
+    <%= form.check_box :voice %>
+    <%= form.label :stuttering %>
+    <%= form.check_box :stuttering %>
+  <h3>Motor & Sensory</h3>
+    <%= form.label :fine_motor_skills %>
+    <%= form.check_box :fine_motor_skills %>
+    <%= form.label :feeding_and_swallowing %>
+    <%= form.check_box :feeding_and_swallowing %>
+    <%= form.label :sensory_processing %>
+    <%= form.check_box :sensory_processing %>
+  <h3>Communication & Behaviour</h3>
+    <%= form.label :literacy %>
+    <%= form.check_box :literacy %>
+    <%= form.label :behaviour_support %>
+    <%= form.check_box :behaviour_support %>
+    <%= form.label :aac_and_multimodal_communication %>
+    <%= form.check_box :aac_and_multimodal_communication %>
+    <div>
+      <%= form.submit :submit %>
+    </div>
+<% end %>

@@ -9,3 +9,5 @@
     <%= link_to "#{patient.first_name} #{patient.last_name}",patient_path(patient.id) %>
   </div>
 <% end %>
+
+<%= render 'therapists/form', therapist: @therapists %>
