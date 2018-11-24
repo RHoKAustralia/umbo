@@ -75,12 +75,6 @@ ActiveRecord::Schema.define(version: 2018_11_24_044622) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "therapist_kinds", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "therapist_specialties", force: :cascade do |t|
     t.bigint "therapist_id"
     t.bigint "specialty_id"
