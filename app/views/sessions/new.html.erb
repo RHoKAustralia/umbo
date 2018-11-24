@@ -2,4 +2,4 @@
 
 <%= render 'form', session: @session %>
 
-<%= link_to 'Back', sessions_path %>
+<%= link_to 'Back', therapist_sessions_path(id: @session.therapist_id) %>

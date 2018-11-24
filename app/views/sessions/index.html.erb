@@ -26,9 +26,9 @@
         <td><%= session.end_time %></td>
         <td><%= session.payment_date %></td>
         <td><%= session.total_cost %></td>
-        <td><%= link_to 'Show', session %></td>
-        <td><%= link_to 'Edit', edit_session_path(session) %></td>
-        <td><%= link_to 'Destroy', session, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', therapist_session_path(id: session.therapist_id) %></td>
+        <td><%= link_to 'Edit', edit_therapist_session_path(id: session.therapist_id) %></td>
+        <td><%= link_to 'Destroy', therapist_session_path(id: session.therapist_id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -36,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New Session', new_session_path %>
+<%= link_to 'New Session', new_therapist_session_path %>

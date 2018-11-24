@@ -25,5 +25,5 @@
   <%= @session.total_cost %>
 </p>
 
-<%= link_to 'Edit', edit_session_path(@session) %> |
-<%= link_to 'Back', sessions_path %>
+<%= link_to 'Edit', edit_therapist_session_path(id: @session.therapist_id) %> |
+<%= link_to 'Back', therapist_sessions_path %>
