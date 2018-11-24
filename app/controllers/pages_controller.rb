@@ -6,8 +6,8 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @user = current_user
-    if @user.patient?
-    end
+    # if current_user.therapist?
+    #   @user = Therapist.find(current_user.therapist.id)
+    # end
   end 
 end
