@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_session, only: [:show, :edit, :update, :destroy]
 
   # GET /sessions
