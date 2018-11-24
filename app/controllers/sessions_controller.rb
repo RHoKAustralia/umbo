@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   # GET /sessions
   # GET /sessions.json
   def index
-    @sessions = Session.where(therapist_id: @therapist.id).includes(:therapist, :patient)
+    @sessions = Session.where(therapist_id: @therapist.id).includes(:patient, therapist: :user)
   end
 
   # GET /sessions/1
@@ -16,6 +16,13 @@ class SessionsController < ApplicationController
 
   # GET /sessions/new
   def new
+    time1 = Date.new(2019,1,1).to_time + 9.hours
+    times = [time1]
+    32.times do |i|
+      time1 += 15.minutes
+      times << time1
+    end
+    @time_strings = times.map { |t| t.strftime("%l:%M%p") }
     @session = Session.new
   end
 

@@ -1,5 +1,14 @@
-<h1>New Session</h1>
+<div class="container">
+  <%= week_calendar do |date| %>
+    <p><%= date.day %></p>
+    <% @time_strings.each do |time| %>
+      <p><%= time %></p>
+    <% end %>
+  <% end %>
 
-<%= render 'form', session: @session %>
+  <h1>New Session</h1>
 
-<%= link_to 'Back', therapist_sessions_path(id: @session.therapist_id) %>
+  <%= render 'form', session: @session %>
+
+  <%= link_to 'Back', therapist_sessions_path(id: @session.therapist_id) %>
+</div>

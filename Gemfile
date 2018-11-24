@@ -58,3 +58,5 @@ gem "devise", "~> 4.5"
 
 gem "textacular", "~> 5.1"
 gem "faker", "~> 1.9"
+
+gem "simple_calendar", "~> 2.3"
