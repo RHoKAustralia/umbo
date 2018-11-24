@@ -1,0 +1,10 @@
+<h1>Results</h1>
+<% if @search != [] %>
+  <% @search.each do |result| %>
+    <%= render './layouts/userthumb', user: result %>
+  <% end %>
+<% else %>
+  <p>
+    No results found
+  </p>
+<% end %>

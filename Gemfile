@@ -55,3 +55,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "devise", "~> 4.5"
+
+gem "textacular", "~> 5.1"
+gem "faker", "~> 1.9"
