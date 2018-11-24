@@ -1,0 +1,13 @@
+<h1>Therapist</h1>
+
+<h4>
+  Hey there <%= current_user.first_name %> <%= current_user.last_name %>
+</h4>
+
+<% current_user.therapist.patients.each do |patient| %>
+  <div>
+    <%= link_to "#{patient.first_name} #{patient.last_name}",patient_path(patient.id) %>
+  </div>
+<% end %>
+
+<%= render 'therapists/form', therapist: @therapists %>

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   def fullname
     @fullname = current_user.first_name + " " + current_user.last_name
