@@ -3,7 +3,6 @@ class PatientsController < ApplicationController
   #customer should only have show access
   before_action :authenticate_user!
   before_action :set_patient, only: [:edit, :update, :destroy]
-  before_action :check_patient, only: [:edit, :update, :destroy]
   # GET /patients/1
   # GET /patients/1.json
   def index
@@ -46,7 +45,7 @@ class PatientsController < ApplicationController
   def update
     respond_to do |format|
       if @patient.update(patient_params)
-        format.html { redirect_to therapists_path, notice: "Patient was successfully updated." }
+        format.html { redirect_to root_path, notice: "Patient was successfully updated." }
       else
         format.html { render :edit }
       end
@@ -66,7 +65,7 @@ class PatientsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_patient
-    @patient = patient.find(params[:id])
+    @patient = Patient.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
