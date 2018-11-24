@@ -1,17 +1,24 @@
 class SearchController < ApplicationController
 
   def index
-    @limit = 12
+    @limit = 100
     @page = params[:page].to_i
     @page ||= 0
     @query = params['search'] == "" ? "%" : params['search']
     
     offset = (@page * @limit)
-
-    if params["search"] == "" || params["search"].nil?
-      @search = User.order(updated_at: :desc).all
+    if params["specialty"].nil? || params["specialty"] == "*"
+      if params["search"] == "" || params["search"].nil?
+        @search = Therapist.order(updated_at: :desc).all
+      else
+        @search = Therapist.basic_search(@query)
+      end
     else
-      @search = User.basic_search(email: @query)
+      if params["search"] == "" || params["search"].nil?
+        @search = Specialty.find_by(name: params["specialty"]).therapists.order(updated_at: :desc).all
+      else
+        @search = Specialty.find_by(name: params["specialty"]).therapists.basic_search(@query).order(updated_at: :desc)
+      end
     end
 
 
