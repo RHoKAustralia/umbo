@@ -10,8 +10,6 @@
 }
 
 .learn-more{
-    border-style: solid;
-    border-color: red;
     background: image-url('background2.jpg');
     background-size: cover;
     background-position: center;
@@ -23,6 +21,12 @@
     text-align: center;
 }
 
+.learn-more-text{
+    width: 100vw;
+    height: 100vh;
+    display: table-cell;
+    text-align: center;
+}
 
 .cover-heading{
     color: white;
