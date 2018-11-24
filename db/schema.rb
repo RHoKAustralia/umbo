@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 2018_11_24_024705) do
     t.string "first_name"
     t.string "last_name"
     t.string "phone"
-    t.integer "role"
+    t.integer "role", default: 2
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
