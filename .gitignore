@@ -26,6 +26,10 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+
+# Ignore local docker images and configuration
+.DS_Store
+config/.DS_Store
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml

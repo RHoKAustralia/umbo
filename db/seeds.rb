@@ -9,29 +9,29 @@
 
 
 
+specialties = [
+{name: 'AAC and multimodal communication', category: 4},
+{ name: 'speech', category: 2 },
+{ name: 'language & development', category: 2},
+{ name: 'stuttering', category: 2},
+{ name: 'voice', category: 2},
+{ name: 'feeding/swallowing', category: 3},
+{ name: 'children', category: 0},
+{ name: 'adults', category: 0},
+{ name: 'autism', category: 1},
+{ name: 'cerebral palsy', category: 1},
+{ name: 'developmental delays', category: 1},
+{ name: 'Down syndrome', category: 1},
+{ name: 'sensory processing', category: 3},
+{ name: 'fine motor skills', category: 3},
+{ name: 'literacy', category: 4},
+{ name: 'behaviour support', category: 4}
+]
 
-specialties = ['AAC and multimodal communication',
-'speech',
-'language',
-'stuttering',
-'voice',
-'feeding/swallowing',
-'kids',
-'adults',
-'autism',
-'cerebral palsy',
-'developmental delays',
-'Down syndrome',
-'sensory processing',
-'fine motor skills',
-'literacy',
-'child and adolescent mental health',
-'adult mental health',
-'behaviour support']
-
-specialties.each do |name|
+specialties.each do |hash|
 Specialty.create(
-name: name
+name: hash[:name],
+category: hash[:category]
 )
 end
 
