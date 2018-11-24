@@ -48,7 +48,7 @@
   )
   puts user3
   therapist = Therapist.create(
-    user_id: user2.id,
+    user_id: user3.id,
     about_me: Faker::Lorem.paragraph(5),
     hourly_rate: 10000,
     profile_image: ''
