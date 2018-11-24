@@ -6,7 +6,43 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+
+
+
+specialties = ['AAC and multimodal communication',
+'speech',
+'language',
+'stuttering',
+'voice',
+'feeding/swallowing',
+'kids',
+'adults',
+'autism',
+'cerebral palsy',
+'developmental delays',
+'Down syndrome',
+'sensory processing',
+'fine motor skills',
+'literacy',
+'child and adolescent mental health',
+'adult mental health',
+'behaviour support']
+
+specialties.each do |name|
+Specialty.create(
+name: name
+)
+end
+
+
+
+
+
+
 # Create users
+
+
 10.times do
   user1 = User.create(
     first_name: Faker::Name.first_name,
@@ -48,7 +84,7 @@
   )
   puts user3
   therapist = Therapist.create(
-    user_id: user2.id,
+    user_id: user3.id,
     about_me: Faker::Lorem.paragraph(5),
     hourly_rate: 10000,
     profile_image: ''
@@ -64,19 +100,6 @@
     therapist_id: therapist.id
   )
   puts connection2
-
-  specialties = ['specialty1',
-                 'specialty2',
-                 'specialty3',
-                 'specialty4',
-                 'specialty5',
-                 'specialty6']
-
-  specialties.each do |name|
-    Specialty.create(
-      name: name
-    )
-  end
 
 
 

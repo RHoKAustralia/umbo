@@ -4,10 +4,12 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div>
-    <%= form_with url: search_index_path, method: :get, local: true do |f| %>
-      <%= f.text_field :search %>
-      <%= f.select :specialty, [["All", "*"], ["Specialty1", "specialty1"], ["Specialty2", "specialty2"], ["Specialty3", "specialty3"], ["Specialty4", "specialty4"], ["Specialty5", "specialty5"], ]%>
-      <%= f.submit  :search , class:"submit" %>
+    <% if user_signed_in? %>
+      <%= form_with url: search_index_path, method: :get, local: true do |f| %>
+        <%= f.text_field :search %>
+        <%= f.select :specialty, [["All", "*"], ["Specialty1", "specialty1"], ["Specialty2", "specialty2"], ["Specialty3", "specialty3"], ["Specialty4", "specialty4"], ["Specialty5", "specialty5"], ]%>
+        <%= f.submit  :search , class:"submit" %>
+      <% end %>
     <% end %>
   </div>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">

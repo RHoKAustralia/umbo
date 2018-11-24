@@ -27,7 +27,7 @@ class PatientsController < ApplicationController
 
     respond_to do |format|
       if @patient.save
-        format.html { redirect_to therapists_path, notice: "patient was successfully created." }
+        format.html { redirect_to root_path, notice: "patient was successfully created." }
       else
         format.html { render :new }
       end
@@ -46,6 +46,13 @@ class PatientsController < ApplicationController
     end
   end
 
+  def show
+    @patient = Patient.find(params[:id])
+  end
+
+  def dashboard
+  end
+
   private
 
   # redirect if someone manualy tries to change route
@@ -57,6 +64,6 @@ class PatientsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def patient_params
-    params.require(:patient).permit(:about_me, :hourly_rate, :profile_image, :user_id)
+    params.require(:patient).permit(:user_id, :first_name, :last_name, :dob, :gender, :ndis_status, :ndis_number, :postcode)
   end
 end

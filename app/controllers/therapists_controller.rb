@@ -19,6 +19,10 @@ class TherapistsController < ApplicationController
   def edit
   end
 
+  def show
+    @therapist = Therapist.find(params[:id])
+  end
+
   # POST /therapists
   # POST /therapists.json
   def create
