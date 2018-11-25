@@ -50,7 +50,7 @@ class TherapistsController < ApplicationController
   # PATCH/PUT /therapists/1
   # PATCH/PUT /therapists/1.json
   def update
-    @therapist = Therapist.find(params[:id]).includes(:specialties)
+    @therapist = Therapist.includes(:specialties).find(params[:id])
     specialties = params[:therapist][:specialties].delete_if { |v| v == "" }
     specialties.each do |x|
       therapist_specialties = TherapistSpecialty.new
@@ -73,8 +73,8 @@ class TherapistsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_therapist
-    @therapist = Therapist.find_by(user_id: params[:id]).includes(:specialties)
-    # byebug
+    @therapist = Therapist.includes(:specialties).find_by(user_id: params[:id])
+      # byebug
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
