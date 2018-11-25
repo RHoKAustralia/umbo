@@ -11,7 +11,7 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <ul class="navbar-nav ml-auto">
     <% if user_signed_in? %>
-      <a href="#">Find a therapist</a>
+      <a href="#" class="nav-item nav-link my-auto">Find a therapist</a>
       <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-item nav-link my-auto" %>
       <%= link_to root_path, class: "navbar-brand" do %>
         <%= image_tag 'tommy.jpg', class: "rounded-circle" %>
