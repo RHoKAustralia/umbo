@@ -1,6 +1,8 @@
 <%= form_with(model: therapist, local: true) do |form| %>
-  <%= form.label :about_me %>
-  <%= form.text_area :about_me %>
+  <div>
+    <%= form.label :about_me %>
+    <%= form.text_area :about_me %>
+  </div>
   <div>
     <%= form.label :profile_image %>
     <%= form.file_field :profile_image %>
