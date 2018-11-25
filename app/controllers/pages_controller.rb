@@ -43,7 +43,7 @@ class PagesController < ApplicationController
       if current_user.patient.nil?
         redirect_to new_patient_path
       else
-        redirect_to dashboard_path
+        redirect_to search_index_path
       end
     elsif user_signed_in? and current_user.therapist?
       redirect_to dashboard_path

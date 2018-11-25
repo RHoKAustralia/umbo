@@ -14,7 +14,6 @@
  *= require_self
  */
 
- @import "bootstrap";
  @import "variables";
 
 * {
@@ -24,10 +23,42 @@
 
  .max-width-300 {
   max-width: 300px;
+  margin: 0 auto !important;
 }
 
 body {
   background: #f5f5f5;
   color: $umbo_text;
   font-family: 'Nunito', sans-serif;
+}
+
+.search-results{
+    .card-block {
+    &:link,
+    &:hover,
+    &:visited,
+    &:active {
+      text-decoration: none;
+      color: black;
+    }
+    .card {
+      width: 340px;
+      height: 500px;
+    }
+  }
+}
+
+.profile-head{
+  display: inline;
+}
+
+.profile-image{
+  border-radius: 50%;
+}
+
+#availability {
+  margin-top:60px;
+}
+.container{
+  margin:24px;
 }
