@@ -31,3 +31,19 @@ body {
   color: $umbo_text;
   font-family: 'Nunito', sans-serif;
 }
+
+.search-results{
+    .card-block {
+    &:link,
+    &:hover,
+    &:visited,
+    &:active {
+      text-decoration: none;
+      color: black;
+    }
+    .card {
+      width: 340px;
+      height: 500px;
+    }
+  }
+}

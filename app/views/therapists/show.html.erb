@@ -1,11 +1,14 @@
 <h1><%= @therapist.user.first_name %> <%= @therapist.user.last_name %></h1>
 
+<%= image_tag @therapist.profile_image_url %>
+
 <h3>Specialties</h3>
-<ul>
+
   <% @therapist.specialties.each do |specialty| %>
-    <li><%= specialty.name %></li>
+    <div class= "btn btn-sm btn-primary">
+      <%= specialty.name %>
+    </div>
   <% end %>
-</ul>
 
 <h3>About Me</h3>
 <%=  @therapist.about_me %>

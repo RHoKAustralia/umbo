@@ -2,7 +2,7 @@ class TherapistsController < ApplicationController
   #authenticate that the user is a therapist in order to allow access to CRUD actions and their specific dishes, all therapists can view each other's therapists
   #customer should only have show access
   before_action :authenticate_user!
-  before_action :set_therapist, only: [:edit, :update, :destroy]
+  before_action :set_therapist, only: [:show, :edit, :update, :destroy]
   # GET /therapists/1
   # GET /therapists/1.json
   def index
