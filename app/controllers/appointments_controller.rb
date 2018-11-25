@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class AppointmentsController < ApplicationController
   before_action :set_session, only: [:show, :edit, :update, :destroy]
 
   # GET /sessions
