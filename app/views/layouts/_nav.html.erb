@@ -15,11 +15,10 @@
       <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-item nav-link my-auto" %>
       <% if current_user.patient? and !current_user.patient.nil?%>
       <%= link_to edit_patient_path(current_user.patient.id), class: "navbar-brand" do %>
-        <%= image_tag 'tommy.jpg', class: "rounded-circle" %>
+        <%= image_tag 'people.png', class: "rounded-circle" %>
         <%end%>
         <%end%>
     <% else %>
-      <a href="#" class="nav-item nav-link my-auto">Find a therapist</a>
       <a href="https://umbo.com.au" class="nav-item nav-link my-auto">About us</a>
       <%= link_to "Login", new_user_session_path, class: "nav-item nav-link my-auto" %>
       <%= link_to "Sign Up", new_user_registration_path, class: "nav-item nav-link my-auto" %>
