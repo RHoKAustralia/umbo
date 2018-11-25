@@ -10,22 +10,22 @@
 
 
 specialties = [
-{name: 'AAC and multimodal communication', category: 4},
+{ name: 'Children', category: 0},
+{ name: 'Adults', category: 0},
+{ name: 'Autism', category: 1},
+{ name: 'Cerebral Palsy', category: 1},
+{ name: 'Developmental Delays', category: 1},
+{ name: 'Down Syndrome', category: 1},
 { name: 'speech', category: 2 },
-{ name: 'language & development', category: 2},
-{ name: 'stuttering', category: 2},
-{ name: 'voice', category: 2},
-{ name: 'feeding/swallowing', category: 3},
-{ name: 'children', category: 0},
-{ name: 'adults', category: 0},
-{ name: 'autism', category: 1},
-{ name: 'cerebral palsy', category: 1},
-{ name: 'developmental delays', category: 1},
-{ name: 'Down syndrome', category: 1},
-{ name: 'sensory processing', category: 3},
-{ name: 'fine motor skills', category: 3},
-{ name: 'literacy', category: 4},
-{ name: 'behaviour support', category: 4}
+{ name: 'Language & Development', category: 2},
+{ name: 'Stuttering', category: 2},
+{ name: 'Voice', category: 2},
+{ name: 'Sensory processing', category: 3},
+{ name: 'Fine Motor Skills', category: 3},
+{ name: 'Feeding/Swallowing', category: 3},
+{ name: 'Literacy', category: 4},
+{ name: 'Behaviour Support', category: 4},
+{ name: 'AAC and Multimodal Communication', category: 4},
 ]
 
 specialties.each do |hash|
