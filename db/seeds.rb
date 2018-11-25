@@ -35,11 +35,6 @@ category: hash[:category]
 )
 end
 
-
-
-
-
-
 # Create users
 
 
@@ -86,8 +81,8 @@ end
   therapist = Therapist.create(
     user_id: user3.id,
     about_me: Faker::Lorem.paragraph(5),
-    hourly_rate: 10000,
-    remote_profile_image_url: 'https://loremflickr.com/300/300/doctor'
+    hourly_rate: 10000
+    # remote_profile_image_url: 'https://loremflickr.com/300/300/doctor'
   )
   puts therapist
   connection1 = PatientTherapist.create(
