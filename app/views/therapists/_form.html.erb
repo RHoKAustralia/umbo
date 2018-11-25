@@ -1,41 +1,35 @@
 <%= form_with(model: therapist, local: true) do |form| %>
+  <%= form.label :about_me %>
+  <%= form.text_area :about_me %>
+  <div>
+    <%= form.label :profile_image %>
+    <%= form.file_field :profile_image %>
+  </div>
   <h3>Age Groups</h3>
-    <%= form.label :adults, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
-    <%= form.check_box :adults, class: "sr-only" %>
-    <%= form.label :children, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
-    <%= form.check_box :children, class: "sr-only" %>
+  <%= form.collection_check_boxes(:specialties, Specialty.all.limit(2), :id, :name ) do |f| %>
+    <%= f.check_box class: "sr-only" %>
+    <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+  <% end %>
   <h3>Disorder</h3>
-    <%= form.label :development_delays, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
-    <%= form.check_box :development_delays, class: "sr-only" %>
-    <%= form.label :cerebral_palsy, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
-    <%= form.check_box :cerebral_palsy, class: "sr-only" %>
-    <%= form.label :autism, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
-    <%= form.check_box :autism, class: "sr-only" %>
-    <%= form.label :down_syndrome, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
-    <%= form.check_box :down_syndrome, class: "sr-only" %>
+  <%= form.collection_check_boxes(:specialties, Specialty.all.limit(4).offset(2), :id, :name ) do |f| %>
+    <%= f.check_box class: "sr-only" %>
+    <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+  <% end %>
   <h3>Speech</h3>
-    <%= form.label :speech, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
-    <%= form.check_box :speech, class: "sr-only" %>
-    <%= form.label :language_development, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
-    <%= form.check_box :language_development, class: "sr-only" %>
-    <%= form.label :voice, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
-    <%= form.check_box :voice, class: "sr-only" %>
-    <%= form.label :stuttering, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
-    <%= form.check_box :stuttering, class: "sr-only" %>
+  <%= form.collection_check_boxes(:specialties, Specialty.all.limit(4).offset(6), :id, :name ) do |f| %>
+    <%= f.check_box class: "sr-only" %>
+    <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+  <% end %>
   <h3>Motor & Sensory</h3>
-    <%= form.label :fine_motor_skills, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
-    <%= form.check_box :fine_motor_skills, class: "sr-only" %>
-    <%= form.label :feeding_and_swallowing, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
-    <%= form.check_box :feeding_and_swallowing, class: "sr-only" %>
-    <%= form.label :sensory_processing, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
-    <%= form.check_box :sensory_processing, class: "sr-only" %>
+  <%= form.collection_check_boxes(:specialties, Specialty.all.limit(3).offset(10), :id, :name ) do |f| %>
+    <%= f.check_box class: "sr-only" %>
+    <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+  <% end %>
   <h3>Communication & Behaviour</h3>
-    <%= form.label :literacy, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
-    <%= form.check_box :literacy, class: "sr-only" %>
-    <%= form.label :behaviour_support, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
-    <%= form.check_box :behaviour_support, class: "sr-only" %>
-    <%= form.label :aac_and_multimodal_communication, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
-    <%= form.check_box :aac_and_multimodal_communication, class: "sr-only" %>
+  <%= form.collection_check_boxes(:specialties, Specialty.all.limit(3).offset(13), :id, :name ) do |f| %>
+    <%= f.check_box class: "sr-only" %>
+    <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+  <% end %>
     <div>
       <%= form.submit :submit %>
     </div>

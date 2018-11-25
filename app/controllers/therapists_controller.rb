@@ -3,7 +3,6 @@ class TherapistsController < ApplicationController
   #customer should only have show access
   before_action :authenticate_user!
   before_action :set_therapist, only: [:edit, :update, :destroy]
-  before_action :check_therapist, only: [:edit, :update, :destroy]
   # GET /therapists/1
   # GET /therapists/1.json
   def index
@@ -17,10 +16,12 @@ class TherapistsController < ApplicationController
 
   # GET /therapists/1/edit
   def edit
+    if current_user.id !== params[:id]
+      redirect_to root_path, notice: "You don't have permission to edit this User"
+    end
   end
 
   def show
-    @therapist = Therapist.find(params[:id])
   end
 
   # POST /therapists
@@ -28,10 +29,18 @@ class TherapistsController < ApplicationController
   def create
     @therapist = Therapist.new(therapist_params)
     @therapist.user_id = current_user.id
+    saved = @therapist.save
+    specialties = params[:therapist][:specialties].delete_if {|v| v==""}
+    specialties.each do |x|
+      therapist_specialties = TherapistSpecialty.new
+      therapist_specialties.therapist_id = @therapist.id
+      therapist_specialties.specialty_id = x
+      therapist_specialties.save
+    end
 
     respond_to do |format|
-      if @therapist.save
-        format.html { redirect_to patients_path, notice: "therapist was successfully created." }
+      if saved
+        format.html { redirect_to root_path, notice: "Therapist was successfully created." }
       else
         format.html { render :new }
       end
@@ -41,9 +50,17 @@ class TherapistsController < ApplicationController
   # PATCH/PUT /therapists/1
   # PATCH/PUT /therapists/1.json
   def update
+    @therapist = Therapist.find(params[:id]).includes(:specialties)
+    specialties = params[:therapist][:specialties].delete_if {|v| v==""}
+    specialties.each do |x|
+      therapist_specialties = TherapistSpecialty.new
+      therapist_specialties.therapist_id = @therapist.id
+      therapist_specialties.specialty_id = x
+      therapist_specialties.save
+    end
     respond_to do |format|
       if @therapist.update(therapist_params)
-        format.html { redirect_to patients_path, notice: "therapist was successfully updated." }
+        format.html { redirect_to root_path, notice: "therapist was successfully updated." }
       else
         format.html { render :edit }
       end
@@ -56,11 +73,12 @@ class TherapistsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_therapist
-    @therapist = therapist.find(params[:id])
+    @therapist = Therapist.find_by(user_id: params[:id]).includes(:specialties)
+    # byebug
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def therapist_params
-    params.require(:therapist).permit(:about_me, :hourly_rate, :profile_image, :user_id)
+    params.require(:therapist).permit(:about_me, :hourly_rate, :profile_image, :user_id, :specialties)
   end
 end

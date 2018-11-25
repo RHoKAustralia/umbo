@@ -16,6 +16,10 @@
 //= require_tree .
 
 var ready = function() {
+  // buttons = document.querySelector('');
+  // buttons.forEach( function() {
+  //   if 
+  // });
   $(".btn-blue-toggle").on("click", function(event) {
     console.log($(this).hasClass('btn-outline-primary'));
     if ($(this).hasClass('btn-outline-primary')) {
