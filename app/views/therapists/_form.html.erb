@@ -1,6 +1,7 @@
 <%= form_with(model: therapist, local: true) do |form| %>
   <div>
-    <%= form.text_area :about_me, class: "form-control" %>
+    <%= form.label :about_me  %>
+    <p><%= form.text_area :about_me, class: "form-control" %></p>
   </div>
   <div>
     <%= form.file_field :profile_image %>
@@ -31,6 +32,6 @@
     <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
 <%end%>
  <div class="form-group">
-        <%= form.submit "Sign up", class: "btn btn-success form-control" %>
+        <%= form.submit "Update", class: "btn btn-success" %>
       </div>
 <% end %>
