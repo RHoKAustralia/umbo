@@ -3,11 +3,23 @@
 <h4>
   Hey there <%= current_user.first_name %> <%= current_user.last_name %>
 </h4>
-
+<% if current_user.therapist.profile_image? %>
+  <%= image_tag current_user.therapist.profile_image_url %>
+<% end %>
 <% current_user.therapist.patients.each do |patient| %>
   <div>
     <%= link_to "#{patient.first_name} #{patient.last_name}",patient_path(patient.id) %>
   </div>
 <% end %>
-
-<%= render 'therapists/form', therapist: @therapists %>
+<h4>About You</h4>
+<%= current_user.therapist.about_me %>
+<h4>Your areas of Interest</h4>
+<% current_user.therapist.specialties.each do |specialty| %>
+  <div class="btn btn-sm btn-primary">
+    <%= specialty.name %>
+  </div>
+<% end %>
+<div>
+  <%= link_to "Edit", edit_therapist_path(current_user.id), class: "btn btn-sm btn-warning" %>
+</div>
+<%#= render 'therapists/form', therapist: @therapists %>
