@@ -37,6 +37,35 @@ end
 
 # Create users
 
+user1 = User.create(
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  role: 2,
+  email: 'patient@email.com',
+  password: 'testing123',
+  phone: Faker::PhoneNumber.cell_phone
+)
+puts user1
+patient1 = Patient.create(
+  user_id: user1.id,
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name
+)
+user3 = User.create(
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  role: 1,
+  email: 'therapist@email.com',
+  password: 'testing123',
+  phone: Faker::PhoneNumber.cell_phone
+)
+puts user3
+therapist = Therapist.create(
+  user_id: user3.id,
+  about_me: Faker::Lorem.paragraph(5),
+  hourly_rate: 10000
+  # remote_profile_image_url: 'https://loremflickr.com/300/300/doctor'
+)
 
 10.times do
   user1 = User.create(

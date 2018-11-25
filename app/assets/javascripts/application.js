@@ -24,10 +24,6 @@ var ready = function() {
   });
 }
 
-$(function() {
-  ready();
-});
-
 $(document).on('turbolinks:load', ready);
 
 // $(document).on('turbolinks:load', () => {

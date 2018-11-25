@@ -16,6 +16,7 @@ class TherapistsController < ApplicationController
 
   # GET /therapists/1/edit
   def edit
+    @specialties = Specialty.pluck(:name)
     # if current_user.id != params[:id]
     #   redirect_to root_path, notice: "You don't have permission to edit this User"
     # end
