@@ -15,7 +15,7 @@
 <%= current_user.therapist.about_me %>
 <h4>Your areas of Interest</h4>
 <% current_user.therapist.specialties.each do |specialty| %>
-  <div class="btn btn-sm btn-primary">
+  <div class="btn btn-sm btn-outline-primary">
     <%= specialty.name %>
   </div>
 <% end %>
