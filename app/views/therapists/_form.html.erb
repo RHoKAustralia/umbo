@@ -10,7 +10,7 @@
     <%= f.check_box class: "sr-only" %>
     <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
   <% end %>
-  <h3>Disorder</h3>
+  <h3>Medical condition</h3>
   <%= form.collection_check_boxes(:specialties, Specialty.all.limit(4).offset(2), :id, :name ) do |f| %>
     <%= f.check_box class: "sr-only" %>
     <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
@@ -29,8 +29,8 @@
   <%= form.collection_check_boxes(:specialties, Specialty.all.limit(3).offset(13), :id, :name ) do |f| %>
     <%= f.check_box class: "sr-only" %>
     <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
-  <% end %>
-    <div>
-      <%= form.submit :submit %>
-    </div>
+<%end%>
+ <div class="form-group">
+        <%= form.submit "Sign up", class: "btn btn-success form-control" %>
+      </div>
 <% end %>

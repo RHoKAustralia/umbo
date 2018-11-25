@@ -20,6 +20,14 @@ var ready = function() {
   // buttons.forEach( function() {
   //   if 
   // });
+  // window.onload = () => {
+  //   let lbl = document.querySelector('label');
+  //   console.log(lbl.for)
+  //   let cbx = document.querySelectorAll('input[type=checkbox]');
+  //   lbl.forEach((checkbox) => {
+  //     console.log(checkbox.for)
+  //   })
+  // }
   $(".btn-blue-toggle").on("click", function(event) {
     console.log($(this).hasClass('btn-outline-primary'));
     if ($(this).hasClass('btn-outline-primary')) {
