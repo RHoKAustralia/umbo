@@ -36,69 +36,27 @@ category: hash[:category]
 end
 
 # Create users
-
-user1 = User.create(
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
-  role: 2,
-  email: 'patient@email.com',
-  password: 'testing123',
-  phone: Faker::PhoneNumber.cell_phone
-)
-puts user1
-patient1 = Patient.create(
-  user_id: user1.id,
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name
-)
-user3 = User.create(
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
-  role: 1,
-  email: 'therapist@email.com',
-  password: 'testing123',
-  phone: Faker::PhoneNumber.cell_phone
-)
-puts user3
-therapist = Therapist.create(
-  user_id: user3.id,
-  about_me: Faker::Lorem.paragraph(5),
-  hourly_rate: 10000
-  # remote_profile_image_url: 'https://loremflickr.com/300/300/doctor'
-)
-
 10.times do
-  user1 = User.create(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    role: 2,
-    email: Faker::Internet.email,
-    password: 'testing123',
-    phone: Faker::PhoneNumber.cell_phone
-  )
-  puts user1
-  patient1 = Patient.create(
-    user_id: user1.id,
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name
-  )
-  puts patient1
-  user2 = User.create(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    role: 2,
-    email: Faker::Internet.email,
-    password: 'testing123',
-    phone: Faker::PhoneNumber.cell_phone
-  )
-  puts user2
-  patient2 = Patient.create(
-    user_id: user2.id,
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name
-  )
-  puts patient2
-  user3 = User.create(
+  patients = []
+  10.times do
+    user = User.create(
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      role: 2,
+      email: Faker::Internet.email,
+      password: 'testing123',
+      phone: Faker::PhoneNumber.cell_phone
+    )
+    puts user
+    patient = Patient.create(
+      user_id: user.id,
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name
+    )
+    puts patient
+    patients << patient
+  end
+  user = User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     role: 1,
@@ -106,32 +64,31 @@ therapist = Therapist.create(
     password: 'testing123',
     phone: Faker::PhoneNumber.cell_phone
   )
-  puts user3
+  puts user
   therapist = Therapist.create(
-    user_id: user3.id,
+    user_id: user.id,
     about_me: Faker::Lorem.paragraph(5),
-    hourly_rate: 10000
-    # remote_profile_image_url: 'https://loremflickr.com/300/300/doctor'
+    hourly_rate: 10000,
+    profile_image: ''
   )
   puts therapist
-  connection1 = PatientTherapist.create(
-    patient_id: patient1.id,
-    therapist_id: therapist.id
-  )
-  puts connection1
-  connection2 = PatientTherapist.create(
-    patient_id: patient2.id,
-    therapist_id: therapist.id
-  )
-  puts connection2
+  patients.each do |patient|
+    connection = PatientTherapist.create(
+      patient_id: patient.id,
+      therapist_id: therapist.id
+    )
+    puts connection
+  end
 
-
-
-  (0..5).to_a.sample(2).each do |id|
+  (1..16).to_a.sample(2).each do |id|
     TherapistSpecialty.create(
       therapist_id: therapist.id,
       specialty_id: id
     )
   end
+end
+
+User.first.update(email: "patient@email.com")
+User.find(11).update(email: "therapist@email.com")
 
 end
