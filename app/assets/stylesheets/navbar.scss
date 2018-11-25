@@ -1,0 +1,33 @@
+@import "variables.scss";
+
+$navbarBackground: #ffffff;
+
+
+.navbar-custom {
+    background-color: $navbarBackground;
+}
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: $umbo_text;
+}
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: $umbo_text;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: $umbo_text;
+}
+
+.navbar-logo {
+    height: 2em;
+}
+
+.navbar-brand img {
+    height: 50px;
+}

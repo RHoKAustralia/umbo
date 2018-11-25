@@ -7,6 +7,8 @@ addons:
 env:
   global:
   - PGPORT=5433
+  # RAILS_MASTER_KEY
+  - secure: e62CTTW+rCCLtagDiG7V4vmLF90uNcXRbvxnY7dokGYfjunWiG9U0a4LuxywWwLM36u+GJ0Dxq8B1ozyPbS4v1CJ9PyM3mA1zqYpDdfz6Xhi+/wErjmx8n08/nDgBvFYRcbOP2vLUopNb4x8j4r5xh4qXaJWT0bVu+8c+Y2VNhcpQr9YdJn2WRbSzOZp9zwtZHHjH7EsPJbdT4Mqf3x3K+SbhXNjZm0P8k3UHF3c/8HEAvMi7k4PS68SiVoxsoHv9xngFCJA2+8O1dR4XkO57FrPKZLqXfW3z+SHw1MEfaMxun8PEkQojMAoGjZ9+FafR8cqM2p2U36BcYjYHrVhL04CU5Trs6JScL1zqY/WYVhYrnJ4mqgyIV6aJQq87stw5jzRDgEUGmNy4xV5uVM0jSBX2DQOQ26w5W3X6WbRwgXsBbhOt/nsIC1MVlT6QerKMltklhvFuyZ2WYeORMs0BV4yCKd0ItMj3fXyGUuPrjyoNvK7EP0nU6bBytbIN/qL0hznw5Tcs4BA27Te954wfeArHdbg2qtgfAd/Fi2jbyeOeq6hbrA81XWUeOcvWK5aql4DjgoMe+ay/q7jjKBWEkkQuzoS3KYanJ8ULy7WR15L1J2SdE5YrXLEIR6eJtlPToUwcMv/oeXIj5Eb3exWH/QYGt8Jvstov8VWogWj2bU=
 language: ruby
 rvm:
   - 2.5.1
@@ -17,7 +19,6 @@ script:
 services:
   - postgresql
   - redis-server
-
 deploy:
   provider: elasticbeanstalk
   access_key_id:
