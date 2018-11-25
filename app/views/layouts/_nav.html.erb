@@ -11,7 +11,7 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <ul class="navbar-nav ml-auto">
     <% if user_signed_in? %>
-      <a href="#" class="nav-item nav-link my-auto">Find a therapist</a>
+      <%= link_to "Find a Therapist", search_index_path, class: "nav-item nav-link my-auto" %>
       <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-item nav-link my-auto" %>
       <% if current_user.patient? and !current_user.patient.nil?%>
       <%= link_to edit_patient_path(current_user.patient.id), class: "navbar-brand" do %>
