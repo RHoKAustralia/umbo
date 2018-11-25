@@ -43,6 +43,16 @@ class PatientsController < ApplicationController
   # PATCH/PUT /patients/1
   # PATCH/PUT /patients/1.json
   def update
+    saved = @patient.update(patient_params)
+    specialties = params[:patient][:specialties].delete_if { |v| v == "" }
+    PatientSpecialty.where(patient_id: @patient.id).each { |e| e.destroy! }
+    specialties.each do |x|
+      patient_specialties = PatientSpecialty.new
+      patient_specialties.patient_id = @patient.id
+      patient_specialties.specialty_id = x
+      patient_specialties.save
+    end
+    raise
     respond_to do |format|
       if @patient.update(patient_params)
         format.html { redirect_to root_path, notice: "Patient was successfully updated." }
