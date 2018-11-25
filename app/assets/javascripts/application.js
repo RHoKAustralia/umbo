@@ -16,7 +16,7 @@
 //= require_tree .
 
 var ready = function() {
-  buttons = document.querySelector('btn-blue-toggle');
+  // buttons = document.querySelector('');
   // buttons.forEach( function() {
   //   if 
   // });
