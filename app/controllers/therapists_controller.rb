@@ -16,7 +16,7 @@ class TherapistsController < ApplicationController
 
   # GET /therapists/1/edit
   def edit
-    if current_user.id !== params[:id]
+    if current_user.id != params[:id].to_i
       redirect_to root_path, notice: "You don't have permission to edit this User"
     end
   end
@@ -30,7 +30,7 @@ class TherapistsController < ApplicationController
     @therapist = Therapist.new(therapist_params)
     @therapist.user_id = current_user.id
     saved = @therapist.save
-    specialties = params[:therapist][:specialties].delete_if {|v| v==""}
+    specialties = params[:therapist][:specialties].delete_if { |v| v == "" }
     specialties.each do |x|
       therapist_specialties = TherapistSpecialty.new
       therapist_specialties.therapist_id = @therapist.id
@@ -51,7 +51,7 @@ class TherapistsController < ApplicationController
   # PATCH/PUT /therapists/1.json
   def update
     @therapist = Therapist.find(params[:id]).includes(:specialties)
-    specialties = params[:therapist][:specialties].delete_if {|v| v==""}
+    specialties = params[:therapist][:specialties].delete_if { |v| v == "" }
     specialties.each do |x|
       therapist_specialties = TherapistSpecialty.new
       therapist_specialties.therapist_id = @therapist.id

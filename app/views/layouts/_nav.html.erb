@@ -12,9 +12,12 @@
         <a href="#">Dashboard</a>
         <a href="#">Find a therapist</a>
         <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-        <%= link_to root_path, class: "navbar-brand" do %>
-          <%= image_tag 'tommy.jpg', class: "rounded-circle" %>
+        <%if current_user.patient?%>
+        <%= link_to edit_patient_path(current_user.patient.id), class: "navbar-brand" do %>
+        <%= image_tag 'tommy.jpg', class: "rounded-circle" %>
+          
         <% end %>
+        <%end%>
       <% else %>
         <a href="#">Find a therapist</a>
         <a href="#">Clinicians sign up</a>
