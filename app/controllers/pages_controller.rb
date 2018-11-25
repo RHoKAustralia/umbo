@@ -7,6 +7,17 @@ class PagesController < ApplicationController
   def dashboard
   end
 
+  def create_admin
+    user = User.new
+    user.last_name = 'Pinzone'
+    user.email = 'francesca@umbo.com.au'
+    user.role = 0
+    user.password = SecureRandom.base64
+    user.first_name = 'Francesca'
+    saved = user.save
+    redirect_to root_path
+  end
+
   private
 
   def check_signed_in
