@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :check_signed_in, except: [:dashboard]
+  # before_action :check_signed_in, except: [:dashboard]
 
   def home
   end
@@ -17,7 +17,7 @@ class PagesController < ApplicationController
         redirect_to dashboard_path
       end
     elsif user_signed_in? and current_user.therapist?
-      # redirect_to edit_therapist_path
+      redirect_to dashboard_path
     end
   end
 end
