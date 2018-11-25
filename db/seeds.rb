@@ -88,6 +88,9 @@ end
   end
 end
 
+User.first.update(email: "patient@email.com")
+User.find(11).update(email: "patient@email.com")
+
 puts "generating sessions"
 # Select random user and listing
 Therapist.all.each do |therapist|
