@@ -15,23 +15,23 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).on('turbolinks:load', () => {
-    const updateButton = label => {
-        const $label = $(label);
+// $(document).on('turbolinks:load', () => {
+//     const updateButton = label => {
+//         const $label = $(label);
 
-        const checkbox = $(`#${$label.attr("for")}`);
-        const isChecked = checkbox.is(":checked");
+//         const checkbox = $(`#${$label.attr("for")}`);
+//         const isChecked = checkbox.is(":checked");
 
-        if (isChecked) {
-            $label.removeClass("btn-primary");
-            $label.addClass("btn-outline-primary");
-        } else {
-            $label.removeClass("btn-outline-primary");
-            $label.addClass("btn-primary");
-        }
-    };
+//         if (isChecked) {
+//             $label.removeClass("btn-primary");
+//             $label.addClass("btn-outline-primary");
+//         } else {
+//             $label.removeClass("btn-outline-primary");
+//             $label.addClass("btn-primary");
+//         }
+//     };
 
-    $(".btn-blue-toggle").on("click", function(event) {
-        updateButton(this);
-    });
-});
+//     $(".btn-blue-toggle").on("click", function(event) {
+//         updateButton(this);
+//     });
+// });
