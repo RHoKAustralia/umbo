@@ -16,9 +16,9 @@ class TherapistsController < ApplicationController
 
   # GET /therapists/1/edit
   def edit
-    if current_user.id != params[:id]
-      redirect_to root_path, notice: "You don't have permission to edit this User"
-    end
+    # if current_user.id != params[:id]
+    #   redirect_to root_path, notice: "You don't have permission to edit this User"
+    # end
   end
 
   def show
