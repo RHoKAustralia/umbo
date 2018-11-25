@@ -1,28 +1,28 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="topbar-left">
-      <%= link_to root_path, class: "navbar-brand" do%>
-        <%= image_tag 'logo.png' %>
+<nav class="navbar navbar-expand-sm navbar-custom">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="topbar-left">
+    <%= link_to image_tag("umbo-logo.png", class: "navbar-logo"), "https://umbo.com.au", class: "navbar-brand py-3" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <ul class="navbar-nav ml-auto">
+    <% if user_signed_in? %>
+      <a href="#" class="nav-item nav-link my-auto">Find a therapist</a>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-item nav-link my-auto" %>
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag 'tommy.jpg', class: "rounded-circle" %>
       <% end %>
-        <%# <img alt="Brand" src="logo.png"> %>
-      </a>
-    </div>
-    <div class="topbar-right">
-      <% if user_signed_in? %>
-        <a href="#">Dashboard</a>
-        <a href="#">Find a therapist</a>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-        <%= link_to root_path, class: "navbar-brand" do %>
-          <%= image_tag 'tommy.jpg', class: "rounded-circle" %>
-        <% end %>
-      <% else %>
-        <a href="#">Find a therapist</a>
-        <a href="#">Clinicians sign up</a>
-        <a href="#">About us</a>
-        <%= link_to "Login", new_user_session_path %>
-        <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-default navbar-btn" %>
-      <% end %>
-    </div>
+    <% else %>
+      <a href="#" class="nav-item nav-link my-auto">Find a therapist</a>
+      <a href="https://umbo.com.au" class="nav-item nav-link my-auto">About us</a>
+      <%= link_to "Login", new_user_session_path, class: "nav-item nav-link my-auto" %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "nav-item nav-link my-auto" %>
+    <% end %>
+    </ul>
   </div>
 </nav>
 
