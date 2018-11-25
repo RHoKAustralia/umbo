@@ -35,7 +35,7 @@
         <%= f.label :postcode, class: "sr-only" %>
         <%= f.number_field :postcode, placeholder: "postcode", class: "form-control" %>
       </div>
-<h3>Disorder</h3>
+<h3>Medical condition</h3>
   <%= f.collection_check_boxes(:specialties, Specialty.all.limit(4).offset(2), :id, :name, {checked: @patient.specialty_ids.map(&:to_param)} ) do |f| %>
     <%= f.check_box class: "sr-only" %>
     <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
