@@ -1,0 +1,41 @@
+.landing-wrapper{
+    background: image-url('landing_background_desat.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    vertical-align: middle;
+    display: table-cell;
+    position: relative; 
+}
+
+.landing-inner-text{
+    text-shadow: 2px 1px 4px #000000
+}
+
+
+.learn-more{
+    background: image-url('background2.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    position: relative; 
+}
+
+.learn-more-text{
+    width: 100vw;
+    height: 100vh;
+    vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+    padding-left: 20%;
+    padding-right: 20%;
+    text-shadow: 2px 1px 4px #000000
+}
+
+.cover-heading{
+    color: white;
+    text-shadow: 3px;
+}

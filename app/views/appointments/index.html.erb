@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sessions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Patient</th>
+      <th>Therapist</th>
+      <th>Date</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Payment date</th>
+      <th>Total cost</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sessions.each do |session| %>
+      <tr>
+        <td><%= session.patient %></td>
+        <td><%= session.therapist %></td>
+        <td><%= session.date %></td>
+        <td><%= session.start_time %></td>
+        <td><%= session.end_time %></td>
+        <td><%= session.payment_date %></td>
+        <td><%= session.total_cost %></td>
+        <td><%= link_to 'Show', session %></td>
+        <td><%= link_to 'Edit', edit_session_path(session) %></td>
+        <td><%= link_to 'Destroy', session, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Session', new_session_path %>
