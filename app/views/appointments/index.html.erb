@@ -1,6 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Sessions</h1>
+<h1>Appointments</h1>
 
 <table>
   <thead>
@@ -17,18 +15,18 @@
   </thead>
 
   <tbody>
-    <% @sessions.each do |session| %>
+    <% @appointments.each do |appointment| %>
       <tr>
-        <td><%= session.patient %></td>
-        <td><%= session.therapist %></td>
-        <td><%= session.date %></td>
-        <td><%= session.start_time %></td>
-        <td><%= session.end_time %></td>
-        <td><%= session.payment_date %></td>
-        <td><%= session.total_cost %></td>
-        <td><%= link_to 'Show', session %></td>
-        <td><%= link_to 'Edit', edit_session_path(session) %></td>
-        <td><%= link_to 'Destroy', session, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= appointment.patient %></td>
+        <td><%= appointment.therapist %></td>
+        <td><%= appointment.date %></td>
+        <td><%= appointment.start_time %></td>
+        <td><%= appointment.end_time %></td>
+        <td><%= appointment.payment_date %></td>
+        <td><%= appointment.total_cost %></td>
+        <td><%= link_to 'Show', appointment %></td>
+        <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
+        <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -36,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Session', new_session_path %>
+<%= link_to 'New Session', new_appointment_path %>

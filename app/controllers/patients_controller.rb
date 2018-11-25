@@ -3,6 +3,7 @@ class PatientsController < ApplicationController
   #customer should only have show access
   before_action :authenticate_user!
   before_action :set_patient, only: [:edit, :update, :destroy]
+  before_action :check_permission, only: [:edit, :update, :destroy]
   # GET /patients/1
   # GET /patients/1.json
   def index
@@ -70,11 +71,17 @@ class PatientsController < ApplicationController
 
   private
 
-  # redirect if someone manualy tries to change route
-
   # Use callbacks to share common setup or constraints between actions.
   def set_patient
     @patient = Patient.find(params[:id])
+  end
+
+  # redirect if someone manualy tries to change route
+  def check_permission
+    unless @patient.user_id == current_user.id
+      redirect_back(fallback_location: root_path,
+        alert: "Error: Permission denied - Invalid User")
+    end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
