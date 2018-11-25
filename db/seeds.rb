@@ -10,28 +10,28 @@
 
 
 specialties = [
-{ name: 'Children', category: 0},
-{ name: 'Adults', category: 0},
-{ name: 'Autism', category: 1},
-{ name: 'Cerebral Palsy', category: 1},
-{ name: 'Developmental Delays', category: 1},
-{ name: 'Down Syndrome', category: 1},
-{ name: 'speech', category: 2 },
-{ name: 'Language & Development', category: 2},
-{ name: 'Stuttering', category: 2},
-{ name: 'Voice', category: 2},
-{ name: 'Sensory processing', category: 3},
-{ name: 'Fine Motor Skills', category: 3},
-{ name: 'Feeding/Swallowing', category: 3},
-{ name: 'Literacy', category: 4},
-{ name: 'Behaviour Support', category: 4},
-{ name: 'AAC and Multimodal Communication', category: 4},
+  { name: 'Children', category: 0},
+  { name: 'Adults', category: 0},
+  { name: 'Autism', category: 1},
+  { name: 'Cerebral Palsy', category: 1},
+  { name: 'Developmental Delays', category: 1},
+  { name: 'Down Syndrome', category: 1},
+  { name: 'speech', category: 2 },
+  { name: 'Language & Development', category: 2},
+  { name: 'Stuttering', category: 2},
+  { name: 'Voice', category: 2},
+  { name: 'Sensory processing', category: 3},
+  { name: 'Fine Motor Skills', category: 3},
+  { name: 'Feeding/Swallowing', category: 3},
+  { name: 'Literacy', category: 4},
+  { name: 'Behaviour Support', category: 4},
+  { name: 'AAC and Multimodal Communication', category: 4},
 ]
 
 specialties.each do |hash|
-Specialty.create(
-name: hash[:name],
-category: hash[:category]
+  Specialty.create(
+  name: hash[:name],
+  category: hash[:category]
 )
 end
 
@@ -80,7 +80,7 @@ end
     puts connection
   end
 
-  (1..16).to_a.sample(2).each do |id|
+  (1..16).to_a.sample(3).each do |id|
     TherapistSpecialty.create(
       therapist_id: therapist.id,
       specialty_id: id
@@ -88,7 +88,16 @@ end
   end
 end
 
+# Set 2 easy to remember emails
 User.first.update(email: "patient@email.com")
 User.find(11).update(email: "therapist@email.com")
 
-end
+# Create admin
+user = User.create(
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  role: 0,
+  email: 'admin@email.com',
+  password: 'testing123',
+  phone: Faker::PhoneNumber.cell_phone
+)
