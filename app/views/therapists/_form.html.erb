@@ -1,28 +1,32 @@
 <%= form_with(model: therapist, local: true) do |form| %>
   <%= form.label :about_me %>
   <%= form.text_area :about_me %>
+  <div>
+    <%= form.label :profile_image %>
+    <%= form.file_field :profile_image %>
+  </div>
   <h3>Age Groups</h3>
-  <%= form.collection_check_boxes(:specialties, Specialty.all.limit(2), :id, :name, {checked: therapist.specialty_ids.map(&:to_param)} ) do |f| %>
+  <%= form.collection_check_boxes(:specialties, Specialty.all.limit(2), :id, :name ) do |f| %>
     <%= f.check_box class: "sr-only" %>
     <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
   <% end %>
   <h3>Disorder</h3>
-  <%= form.collection_check_boxes(:specialties, Specialty.all.limit(4).offset(2), :id, :name, {checked: therapist.specialty_ids.map(&:to_param)} ) do |f| %>
+  <%= form.collection_check_boxes(:specialties, Specialty.all.limit(4).offset(2), :id, :name ) do |f| %>
     <%= f.check_box class: "sr-only" %>
     <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
   <% end %>
   <h3>Speech</h3>
-  <%= form.collection_check_boxes(:specialties, Specialty.all.limit(4).offset(6), :id, :name, {checked: therapist.specialty_ids.map(&:to_param)} ) do |f| %>
+  <%= form.collection_check_boxes(:specialties, Specialty.all.limit(4).offset(6), :id, :name ) do |f| %>
     <%= f.check_box class: "sr-only" %>
     <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
   <% end %>
   <h3>Motor & Sensory</h3>
-  <%= form.collection_check_boxes(:specialties, Specialty.all.limit(3).offset(10), :id, :name, {checked: therapist.specialty_ids.map(&:to_param)} ) do |f| %>
+  <%= form.collection_check_boxes(:specialties, Specialty.all.limit(3).offset(10), :id, :name ) do |f| %>
     <%= f.check_box class: "sr-only" %>
     <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
   <% end %>
   <h3>Communication & Behaviour</h3>
-  <%= form.collection_check_boxes(:specialties, Specialty.all.limit(3).offset(13), :id, :name, {checked: therapist.specialty_ids.map(&:to_param)} ) do |f| %>
+  <%= form.collection_check_boxes(:specialties, Specialty.all.limit(3).offset(13), :id, :name ) do |f| %>
     <%= f.check_box class: "sr-only" %>
     <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
   <% end %>

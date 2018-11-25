@@ -5,4 +5,5 @@ class Therapist < ApplicationRecord
   accepts_nested_attributes_for :specialties
   has_many :patient_therapists
   has_many :patients, through: :patient_therapists
+  mount_uploader :profile_image, ImageUploader
 end
