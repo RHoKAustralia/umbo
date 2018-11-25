@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require_tree .
 
-$(() => {
+$(document).on('turbolinks:load', () => {
     const updateButton = label => {
         const $label = $(label);
 
