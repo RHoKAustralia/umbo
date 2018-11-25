@@ -63,3 +63,5 @@ gem 'bootstrap', '~> 4.1.3'
 gem "carrierwave", "~> 1.2"
 
 gem "mini_magick", "~> 4.9"
+
+gem "carrierwave-aws", "~> 1.3"

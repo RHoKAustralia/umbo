@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  # before_action :check_signed_in, except: [:dashboard]
+  before_action :check_signed_in, except: [:dashboard]
 
   def home
   end

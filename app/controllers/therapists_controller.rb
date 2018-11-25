@@ -16,7 +16,7 @@ class TherapistsController < ApplicationController
 
   # GET /therapists/1/edit
   def edit
-    if current_user.id !== params[:id]
+    if current_user.id != params[:id].to_i
       redirect_to root_path, notice: "You don't have permission to edit this User"
     end
   end
@@ -50,7 +50,7 @@ class TherapistsController < ApplicationController
   # PATCH/PUT /therapists/1
   # PATCH/PUT /therapists/1.json
   def update
-    @therapist = Therapist.find(params[:id]).includes(:specialties)
+    @therapist = Therapist.includes(:specialties).find(params[:id])
     specialties = params[:therapist][:specialties].delete_if {|v| v==""}
     specialties.each do |x|
       therapist_specialties = TherapistSpecialty.new
@@ -73,7 +73,7 @@ class TherapistsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_therapist
-    @therapist = Therapist.find_by(user_id: params[:id]).includes(:specialties)
+    @therapist = Therapist.includes(:specialties).find_by(user_id: params[:id])
     # byebug
   end
 
