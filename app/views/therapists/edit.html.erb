@@ -1,1 +1,8 @@
-<%= render 'form', therapist: @therapist %>
+<%#= render 'form', therapist: @therapist %>
+
+<%= form_with(model: @therapist, local: true) do |form| %>
+  <%= form.collection_check_boxes(:specialties, Specialty.all, :id, :name ) do |f| %>
+    <%= f.check_box class: "sr-only" %>
+    <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+  <% end %>
+<% end %>

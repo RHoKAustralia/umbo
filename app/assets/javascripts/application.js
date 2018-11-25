@@ -15,6 +15,21 @@
 //= require turbolinks
 //= require_tree .
 
+
+
+var ready = function() {
+  $(".btn-blue-toggle").on("click", function(event) {
+    $(this).toggleClass('btn-outline-primary');
+    $(this).toggleClass('btn-primary');
+  });
+}
+
+$(function() {
+  ready();
+});
+
+$(document).on('turbolinks:load', ready);
+
 // $(document).on('turbolinks:load', () => {
 //     const updateButton = label => {
 //         const $label = $(label);
