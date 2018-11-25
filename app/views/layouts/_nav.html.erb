@@ -13,9 +13,11 @@
     <% if user_signed_in? %>
       <%= link_to "Find a Therapist", search_index_path, class: "nav-item nav-link my-auto" %>
       <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-item nav-link my-auto" %>
-      <%= link_to root_path, class: "navbar-brand" do %>
+      <% if current_user.patient? and !current_user.patient.nil?%>
+      <%= link_to edit_patient_path(current_user.patient.id), class: "navbar-brand" do %>
         <%= image_tag 'tommy.jpg', class: "rounded-circle" %>
-      <% end %>
+        <%end%>
+        <%end%>
     <% else %>
       <a href="#" class="nav-item nav-link my-auto">Find a therapist</a>
       <a href="https://umbo.com.au" class="nav-item nav-link my-auto">About us</a>
@@ -27,8 +29,3 @@
 </nav>
 
 
-<%#= form_with url: search_index_path, method: :get, local: true do |f| %>
-  <%#= f.text_field :search %>
-  <%#= f.select :specialty, [["All", "*"], ["Specialty1", "specialty1"], ["Specialty2", "specialty2"], ["Specialty3", "specialty3"], ["Specialty4", "specialty4"], ["Specialty5", "specialty5"], ]%>
-  <%#= f.submit  :search , class:"submit" %>
-<%# end %>
