@@ -14,12 +14,12 @@ class PatientFlowsTest < ActionDispatch::IntegrationTest
 
   test "login takes to patient creation if missing" do
     log_in_and_follow(@email_no_patient)
-    assert_redirected_to "/patients/new"
+    assert_redirected_to new_patient_path
   end
 
   test "login takes to therapist selection if missing" do
     log_in_and_follow(@email_no_therapist)
-    assert_redirected_to "/search"
+    assert_redirected_to search_index_path
   end
 
   # TODO: add a test for user logging in with @email once that handling is in
