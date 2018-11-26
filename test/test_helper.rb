@@ -6,5 +6,14 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+  def log_in(email)
+    post "/users/sign_in",
+      params: { user: { email: email, password: 'testing123' } }
+  end
+
+  def log_in_and_follow(email)
+    log_in email
+    follow_redirect!
+  end
+
 end

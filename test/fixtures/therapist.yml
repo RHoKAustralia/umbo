@@ -1,0 +1,4 @@
+Therapist:
+  user: TherapistUser
+  about_me: "Just a therapist"
+  hourly_rate: 10000
