@@ -3,7 +3,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="topbar-left">
-    <%= link_to image_tag("umbo-logo.png", class: "navbar-logo"), "https://umbo.com.au", class: "navbar-brand py-3" %>
+    <%= link_to image_tag("umbo-logo.png", class: "navbar-logo"), root_path, class: "navbar-brand py-3" %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -11,18 +11,40 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <ul class="navbar-nav ml-auto">
     <% if user_signed_in? %>
-      <%= link_to "Find a Therapist", search_index_path, class: "nav-item nav-link my-auto" %>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-item nav-link my-auto" %>
+      <% if current_user.admin? %>
+        <li class="nav-item my-auto">
+          <%= link_to "Add Therapist", new_therapist_user_path, class: "nav-link my-auto" %>
+        </li>
+      <% end %>
+      <li class="nav-item my-auto">
+        <%= link_to "Find a Therapist", search_index_path, class: "nav-link my-auto" %>
+      </li>
+      <li class="nav-item my-auto">
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link my-auto" %>
+      </li>
       <% if current_user.patient? and !current_user.patient.nil?%>
-      <%= link_to edit_patient_path(current_user.patient.id), class: "navbar-brand" do %>
-        <%= image_tag 'tommy.jpg', class: "rounded-circle" %>
-        <%end%>
-        <%end%>
+        <li class="nav-item my-auto">
+          <%= link_to edit_patient_path(current_user.patient.id), class: "navbar-brand" do %>
+            <%= image_tag 'people.png', class: "rounded-circle" %>
+          <%end%>
+        </li>
+      <% elsif current_user.therapist? && !current_user.therapist.nil? %>
+        <li class="nav-item my-auto">
+          <%= link_to edit_therapist_path(current_user.therapist.id), class: "navbar-brand" do %>
+            <%= image_tag 'people.png', class: "rounded-circle" %>
+          <%end%>
+        </li>
+      <%end%>
     <% else %>
-      <a href="#" class="nav-item nav-link my-auto">Find a therapist</a>
-      <a href="https://umbo.com.au" class="nav-item nav-link my-auto">About us</a>
-      <%= link_to "Login", new_user_session_path, class: "nav-item nav-link my-auto" %>
-      <%= link_to "Sign Up", new_user_registration_path, class: "nav-item nav-link my-auto" %>
+      <li class="nav-item my-auto">
+        <a href="https://umbo.com.au" class="nav-link my-auto">About us</a>
+      </li>
+      <li class="nav-item my-auto">
+        <%= link_to "Login", new_user_session_path, class: "nav-link my-auto" %>
+      </li>
+      <li class="nav-item my-auto">
+        <%= link_to "Sign Up", new_user_registration_path, class: "nav-link my-auto" %>
+      </li>
     <% end %>
     </ul>
   </div>

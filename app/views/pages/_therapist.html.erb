@@ -20,6 +20,6 @@
   </div>
 <% end %>
 <div>
-  <%= link_to "Edit", edit_therapist_path(current_user.id), class: "btn btn-sm btn-warning" %>
+  <%= link_to "Edit", edit_therapist_path(current_user.therapist.id), class: "btn btn-sm btn-warning" %>
 </div>
 <%#= render 'therapists/form', therapist: @therapists %>
