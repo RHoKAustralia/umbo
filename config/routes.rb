@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # devise_for :users
-  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register'}, :controllers => { :registrations => :registrations }
+  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout'}
+  # devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register'}, :controllers => { :registrations => :registrations }
   get "pages/home"
   get "create_admin", to: 'admin#create_admin'
   post "create_therapist_user", to: 'admin#create_therapist_user', as: 'create_therapist_user'

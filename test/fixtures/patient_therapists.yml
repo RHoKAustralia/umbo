@@ -1,0 +1,3 @@
+PatientTherapistConnection:
+  patient: Patient
+  therapist: Therapist
