@@ -15,23 +15,34 @@
 //= require turbolinks
 //= require_tree .
 
-$(() => {
-    const updateButton = label => {
-        const $label = $(label);
 
-        const checkbox = $(`#${$label.attr("for")}`);
-        const isChecked = checkbox.is(":checked");
 
-        if (isChecked) {
-            $label.removeClass("btn-primary");
-            $label.addClass("btn-outline-primary");
-        } else {
-            $label.removeClass("btn-outline-primary");
-            $label.addClass("btn-primary");
-        }
-    };
+var ready = function() {
+  $(".btn-blue-toggle").on("click", function(event) {
+    $(this).toggleClass('btn-outline-primary');
+    $(this).toggleClass('btn-primary');
+  });
+}
 
-    $(".btn-blue-toggle").on("click", function(event) {
-        updateButton(this);
-    });
-});
+$(document).on('turbolinks:load', ready);
+
+// $(document).on('turbolinks:load', () => {
+//     const updateButton = label => {
+//         const $label = $(label);
+
+//         const checkbox = $(`#${$label.attr("for")}`);
+//         const isChecked = checkbox.is(":checked");
+
+//         if (isChecked) {
+//             $label.removeClass("btn-primary");
+//             $label.addClass("btn-outline-primary");
+//         } else {
+//             $label.removeClass("btn-outline-primary");
+//             $label.addClass("btn-primary");
+//         }
+//     };
+
+//     $(".btn-blue-toggle").on("click", function(event) {
+//         updateButton(this);
+//     });
+// });

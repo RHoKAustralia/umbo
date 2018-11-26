@@ -1,0 +1,50 @@
+  <h3>Age Groups</h3>
+  <% @specialties[0..1].each do |specialty| %>
+    <% if therapist.specialties.pluck(:name).include?(specialty) %>
+      <%= form.check_box specialty, class: "sr-only", checked: true %>
+      <%= form.label specialty, class: "btn btn-sm btn-primary btn-blue-toggle" %>
+    <% else %>
+      <%= form.check_box specialty, class: "sr-only", checked: false %>
+      <%= form.label specialty, class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <% end %>
+  <% end %>
+  <h3>Medical condition</h3>
+  <% @specialties[2..5].each do |specialty| %>
+    <% if @therapist.specialties.pluck(:name).include?(specialty) %>
+      <%= form.check_box class: "sr-only", checked: true %>
+      <%= form.label class: "btn btn-sm btn-primary btn-blue-toggle" %>
+    <% else %>
+      <%= form.check_box class: "sr-only", checked: false %>
+      <%= form.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <% end %>
+  <% end %>
+  <h3>Speech</h3>
+  <% @specialties[6..9].each do |specialty| %>
+    <% if @therapist.specialties.pluck(:name).include?(specialty) %>
+      <%= form.check_box class: "sr-only", checked: true %>
+      <%= form.label class: "btn btn-sm btn-primary btn-blue-toggle" %>
+    <% else %>
+      <%= form.check_box class: "sr-only", checked: false %>
+      <%= form.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <% end %>
+  <% end %>
+  <h3>Motor & Sensory</h3>
+  <% @specialties[10..12].each do |specialty| %>
+    <% if @therapist.specialties.pluck(:name).include?(specialty) %>
+      <%= form.check_box class: "sr-only", checked: true %>
+      <%= form.label class: "btn btn-sm btn-primary btn-blue-toggle" %>
+    <% else %>
+      <%= form.check_box class: "sr-only", checked: false %>
+      <%= form.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <% end %>
+  <% end %>
+  <h3>Communication & Behaviour</h3>
+  <% @specialties[14..16].each do |specialty| %>
+    <% if @therapist.specialties.pluck(:name).include?(specialty) %>
+      <%= form.check_box class: "sr-only", checked: true %>
+      <%= form.label class: "btn btn-sm btn-primary btn-blue-toggle" %>
+    <% else %>
+      <%= form.check_box class: "sr-only", checked: false %>
+      <%= form.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <% end %>
+  <% end %>
