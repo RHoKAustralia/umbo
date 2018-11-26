@@ -3,13 +3,13 @@ require 'test_helper'
 class PatientFlowsTest < ActionDispatch::IntegrationTest
   setup do
     # email of a patient that doesn't have patient object set up
-    @email_no_patient = 'not.set.up@patients.com'
+    @email_no_patient = user(:NoPatientPatientUser).email
 
     # email of a patient that doesn't have any therapists
-    @email_no_therapist = 'looking4therapist@patients.com'
+    @email_no_therapist = user(:NoTherapistPatientUser).email
 
     # full blown patient user's email
-    @email = 'patient@patients.com'
+    @email = user(:PatientUser).email
   end
 
   test "login takes to patient creation if missing" do

@@ -7,7 +7,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   def log_in(email)
-    post "/users/sign_in",
+    post "/login",
       params: { user: { email: email, password: 'testing123' } }
   end
 

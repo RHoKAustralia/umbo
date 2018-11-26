@@ -9,21 +9,21 @@ class BasicFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "can see the login page with a form" do
-    get "/users/sign_in"
+    get "/login"
     assert_response :success
     assert_select "h1", "Log In"
     assert_select "form"
   end
 
   test "can see the sign-up page with a form" do
-    get "/users/sign_up"
+    get "/register"
     assert_response :success
     assert_select "h1", "Sign up"
     assert_select "form"
   end
 
   test "cannot log in without password" do
-    post "/users/sign_in",
+    post "/login",
       params: { user: { email: User.first.email, password: "not a real password" } }
 
     assert_select "a", "Login"  # there should still be a "Login" link
@@ -39,7 +39,7 @@ class BasicFlowsTest < ActionDispatch::IntegrationTest
   test "can log out after log in" do
     User.all.each do |user|
       log_in_and_follow(user.email)
-      delete "/users/sign_out"
+      delete "/logout"
       assert_redirected_to "/"
     end
   end

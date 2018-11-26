@@ -2,8 +2,8 @@ require 'test_helper'
 
 class TherapistFlowsTest < ActionDispatch::IntegrationTest
   setup do
-    @email_not_set_up = 'just.added@therapists.com'
-    @email = 'thera.pist@therapists.com'
+    @email_not_set_up = user(:NoTherapistUser).email
+    @email = user(:TherapistUser).email
   end
 
   test "log in takes to ??? if missing" do
