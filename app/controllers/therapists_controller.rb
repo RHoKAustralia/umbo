@@ -57,7 +57,11 @@ class TherapistsController < ApplicationController
       therapist_specialties = TherapistSpecialty.new
       therapist_specialties.therapist_id = @therapist.id
       therapist_specialties.specialty_id = x
-      therapist_specialties.save
+      begin
+        therapist_specialties.save
+      rescue ActiveRecord::RecordNotUnique => e
+        next
+      end
     end
     respond_to do |format|
       if @therapist.update(therapist_params)
@@ -66,6 +70,7 @@ class TherapistsController < ApplicationController
         format.html { render :edit }
       end
     end
+
   end
 
   private
