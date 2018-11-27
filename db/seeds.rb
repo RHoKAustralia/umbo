@@ -10,22 +10,22 @@
 
 
 specialties = [
-  { name: 'AAC and multimodal communication', category: 4},
+  { name: 'Children', category: 0},
+  { name: 'Adults', category: 0},
+  { name: 'Autism', category: 1},
+  { name: 'Cerebral Palsy', category: 1},
+  { name: 'Developmental Delays', category: 1},
+  { name: 'Down Syndrome', category: 1},
   { name: 'speech', category: 2 },
-  { name: 'language & development', category: 2},
-  { name: 'stuttering', category: 2},
-  { name: 'voice', category: 2},
-  { name: 'feeding/swallowing', category: 3},
-  { name: 'children', category: 0},
-  { name: 'adults', category: 0},
-  { name: 'autism', category: 1},
-  { name: 'cerebral palsy', category: 1},
-  { name: 'developmental delays', category: 1},
-  { name: 'Down syndrome', category: 1},
-  { name: 'sensory processing', category: 3},
-  { name: 'fine motor skills', category: 3},
-  { name: 'literacy', category: 4},
-  { name: 'behaviour support', category: 4}
+  { name: 'Language & Development', category: 2},
+  { name: 'Stuttering', category: 2},
+  { name: 'Voice', category: 2},
+  { name: 'Sensory processing', category: 3},
+  { name: 'Fine Motor Skills', category: 3},
+  { name: 'Feeding/Swallowing', category: 3},
+  { name: 'Literacy', category: 4},
+  { name: 'Behaviour Support', category: 4},
+  { name: 'AAC and Multimodal Communication', category: 4},
 ]
 
 specialties.each do |hash|
@@ -80,7 +80,7 @@ end
     puts connection
   end
 
-  (1..16).to_a.sample(2).each do |id|
+  (1..16).to_a.sample(3).each do |id|
     TherapistSpecialty.create(
       therapist_id: therapist.id,
       specialty_id: id
@@ -88,48 +88,59 @@ end
   end
 end
 
+# puts "generating sessions"
+# # Select random user and listing
+# Therapist.all.each do |therapist|
+#   p therapist
+#   # therapist = Therapist.find(Therapist.pluck(:id).sample)
+#   date_range = (3.months.ago.to_date..3.months.from_now.to_date).to_a
+#   session_times = []
+#   date_range.each do |date|
+#     time1 = date.to_time + 9.hours
+#     times = [time1]
+#     32.times do |i|
+#       time1 += 15.minutes
+#       times << time1
+#     end
+#     2.times do
+#       time = times[0..-4].sample
+#       index = times.index(time)
+#       num_blocks = rand(1..4)
+#       length = num_blocks * 15
+#       time2 = time + length.minutes
+#       if times.index(time2) != index + num_blocks
+#         next
+#       end
+#       times.slice!(index, num_blocks)
+#       session_times << { time: time, length: length }
+#     end
+#   end
+
+#   session_times.each_with_index do |hash, i|
+#     time = hash[:time]
+#     length = hash[:length]
+#     Session.create(
+#       therapist_id: therapist.id,
+#       patient_id: therapist.patients[i % 10].id,
+#       date: time.to_date,
+#       start_time: time.strftime("%H:%M"),
+#       end_time: (time + length.minutes).strftime("%H:%M"),
+#       payment_date: time - 7.days,
+#       total_cost: length * 3 * 100
+#     )
+#   end
+# end
+
+# Set 2 easy to remember emails
 User.first.update(email: "patient@email.com")
-User.find(11).update(email: "patient@email.com")
+User.find(11).update(email: "therapist@email.com")
 
-puts "generating sessions"
-# Select random user and listing
-Therapist.all.each do |therapist|
-  p therapist
-  # therapist = Therapist.find(Therapist.pluck(:id).sample)
-  date_range = (3.months.ago.to_date..3.months.from_now.to_date).to_a
-  session_times = []
-  date_range.each do |date|
-    time1 = date.to_time + 9.hours
-    times = [time1]
-    32.times do |i|
-      time1 += 15.minutes
-      times << time1
-    end
-    2.times do
-      time = times[0..-4].sample
-      index = times.index(time)
-      num_blocks = rand(1..4)
-      length = num_blocks * 15
-      time2 = time + length.minutes
-      if times.index(time2) != index + num_blocks
-        next
-      end
-      times.slice!(index, num_blocks)
-      session_times << { time: time, length: length }
-    end
-  end
-
-  session_times.each_with_index do |hash, i|
-    time = hash[:time]
-    length = hash[:length]
-    Session.create(
-      therapist_id: therapist.id,
-      patient_id: therapist.patients[i % 10].id,
-      date: time.to_date,
-      start_time: time.strftime("%H:%M"),
-      end_time: (time + length.minutes).strftime("%H:%M"),
-      payment_date: time - 7.days,
-      total_cost: length * 3 * 100
-    )
-  end
-end
+# Create admin
+user = User.create(
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  role: 0,
+  email: 'admin@email.com',
+  password: 'testing123',
+  phone: Faker::PhoneNumber.cell_phone
+)

@@ -1,3 +1,13 @@
-<div>
-  <%= user.user.email %>
-</div>
+<%= link_to therapist_path(user.id), class: "card-block" do %>
+  <div class="card my-3 mx-3">
+    <% unless user.profile_image? %>
+      <%= image_tag asset_path("noimage.png"), class: "card-img-top", alt: "Card image cap"%>
+    <% else %>
+      <%= image_tag user.profile_image_url , class: "card-img-top", alt: "Card image cap" %>
+    <% end %>
+    <div class="card-body">
+      <h5 class="card-title"><%= user.user.first_name %> <%= user.user.last_name %></h5>
+      <p class="card-text"><%= user.about_me %></p>
+    </div>
+  </div>
+<% end %>

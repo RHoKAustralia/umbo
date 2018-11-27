@@ -1,0 +1,41 @@
+AdminUser:
+  first_name: Admin
+  last_name: Admin
+  role: 0
+  email: admin@admin.com
+  encrypted_password: "$2a$11$3kmBdwqSpkcNb6JLnDMjJOA5MLMuGf4YbocKimF2qfXDgf5Nz8Zwu"
+
+TherapistUser:
+  first_name: Thera
+  last_name: Pist
+  role: 1
+  email: thera.pist@therapists.com
+  encrypted_password: "$2a$11$3kmBdwqSpkcNb6JLnDMjJOA5MLMuGf4YbocKimF2qfXDgf5Nz8Zwu"
+
+NoTherapistUser:
+  first_name: JustAdded
+  last_name: Therapist
+  role: 1
+  email: just.added@therapists.com
+  encrypted_password: "$2a$11$3kmBdwqSpkcNb6JLnDMjJOA5MLMuGf4YbocKimF2qfXDgf5Nz8Zwu"
+
+PatientUser:
+  first_name: Patient
+  last_name: User
+  role: 2
+  email: patient@patients.com
+  encrypted_password: "$2a$11$3kmBdwqSpkcNb6JLnDMjJOA5MLMuGf4YbocKimF2qfXDgf5Nz8Zwu"
+
+NoTherapistPatientUser:
+  first_name: LookingForTherapist
+  last_name: User
+  role: 2
+  email: looking4therapist@patients.com
+  encrypted_password: "$2a$11$3kmBdwqSpkcNb6JLnDMjJOA5MLMuGf4YbocKimF2qfXDgf5Nz8Zwu"
+
+NoPatientPatientUser:
+  first_name: BarePatient
+  last_name: User
+  role: 2
+  email: not.set.up@patients.com
+  encrypted_password: "$2a$11$3kmBdwqSpkcNb6JLnDMjJOA5MLMuGf4YbocKimF2qfXDgf5Nz8Zwu"

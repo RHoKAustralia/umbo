@@ -1,31 +1,53 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-  <%= link_to 'Umbo', root_path, class: "navbar-brand"%>
+<nav class="navbar navbar-expand-sm navbar-custom">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div>
-    <% if user_signed_in? %>
-      <%= form_with url: search_index_path, method: :get, local: true do |f| %>
-        <%= f.text_field :search %>
-        <%= f.select :specialty, [["All", "*"], ["Specialty1", "specialty1"], ["Specialty2", "specialty2"], ["Specialty3", "specialty3"], ["Specialty4", "specialty4"], ["Specialty5", "specialty5"], ]%>
-        <%= f.submit  :search , class:"submit" %>
-      <% end %>
-    <% end %>
+  <div class="topbar-left">
+    <%= link_to image_tag("umbo-logo.png", class: "navbar-logo"), root_path, class: "navbar-brand py-3" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
   </div>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <ul class="navbar-nav ml-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item my-auto ">
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-item nav-link my-auto" %>
-        </li>
-      <% else %>
-        <li class="nav-item my-auto ">
-          <%= link_to "Login", new_user_session_path, class: "nav-item nav-link my-auto" %>
-        </li>
-        <li class="nav-item my-auto ">
-          <%= link_to "Sign Up", new_user_registration_path, class: "nav-item nav-link my-auto" %>
+    <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        <li class="nav-item my-auto">
+          <%= link_to "Add Therapist", new_therapist_user_path, class: "nav-link my-auto" %>
         </li>
       <% end %>
+      <li class="nav-item my-auto">
+        <%= link_to "Find a Therapist", search_index_path, class: "nav-link my-auto" %>
+      </li>
+      <li class="nav-item my-auto">
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link my-auto" %>
+      </li>
+      <% if current_user.patient? and !current_user.patient.nil?%>
+        <li class="nav-item my-auto">
+          <%= link_to edit_patient_path(current_user.patient.id), class: "navbar-brand" do %>
+            <%= image_tag 'people.png', class: "rounded-circle" %>
+          <%end%>
+        </li>
+      <% elsif current_user.therapist? && !current_user.therapist.nil? %>
+        <li class="nav-item my-auto">
+          <%= link_to edit_therapist_path(current_user.therapist.id), class: "navbar-brand" do %>
+            <%= image_tag 'people.png', class: "rounded-circle" %>
+          <%end%>
+        </li>
+      <%end%>
+    <% else %>
+      <li class="nav-item my-auto">
+        <a href="https://umbo.com.au" class="nav-link my-auto">About us</a>
+      </li>
+      <li class="nav-item my-auto">
+        <%= link_to "Login", new_user_session_path, class: "nav-link my-auto" %>
+      </li>
+      <li class="nav-item my-auto">
+        <%= link_to "Sign Up", new_user_registration_path, class: "nav-link my-auto" %>
+      </li>
+    <% end %>
     </ul>
   </div>
 </nav>
+
+

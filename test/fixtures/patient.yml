@@ -1,0 +1,9 @@
+NoTherapistPatient:
+  first_name: Kid
+  last_name: LookingForTherapist
+  user: NoTherapistPatientUser
+
+Patient:
+  first_name: Kid
+  last_name: User
+  user: PatientUser

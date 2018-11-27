@@ -1,0 +1,61 @@
+<%= form_with(model: @patient, local: true) do |f| %>
+  
+
+   <div class="form-group">
+        <%= f.label :first_name, class: "sr-only" %>
+        <%= f.text_field :first_name, autofocus: true, placeholder: "First Name", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :last_name, class: "sr-only" %>
+        <%= f.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :gender, class: "sr-only" %>
+        <%= f.select(:gender, [["male", 'male'],["female", 'female']],{}, {class: "form-control"}) %>
+      </div>
+      <div class="form-group">
+        <%= f.label :dob, class: "sr-only" %>
+        <%= f.date_field :dob, placeholder: "Date of birth", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :ndis_status do%>
+        <p>NDIS approval</p>
+        <%end%>
+
+        <%= f.check_box :ndis_status, class: "" %>
+
+      </div>
+       <div class="form-group">
+        <%= f.label :ndis_number, class: "sr-only" %>
+        <%= f.number_field :ndis_number, placeholder: "NDIS Number", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :postcode, class: "sr-only" %>
+        <%= f.number_field :postcode, placeholder: "postcode", class: "form-control" %>
+      </div>
+<h3>Medical condition</h3>
+  <%= f.collection_check_boxes(:specialties, Specialty.all.limit(4).offset(2), :id, :name, {checked: @patient.specialty_ids.map(&:to_param)} ) do |f| %>
+    <%= f.check_box class: "sr-only" %>
+    <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+  <% end %>
+  <h3>Speech</h3>
+  <%= f.collection_check_boxes(:specialties, Specialty.all.limit(4).offset(6), :id, :name, {checked: @patient.specialty_ids.map(&:to_param)} ) do |f| %>
+    <%= f.check_box class: "sr-only" %>
+    <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+  <% end %>
+  <h3>Motor & Sensory</h3>
+  <%= f.collection_check_boxes(:specialties, Specialty.all.limit(3).offset(10), :id, :name, {checked: @patient.specialty_ids.map(&:to_param)} ) do |f| %>
+    <%= f.check_box class: "sr-only" %>
+    <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+  <% end %>
+  <h3>Communication & Behaviour</h3>
+  <%= f.collection_check_boxes(:specialties, Specialty.all.limit(3).offset(13), :id, :name, {checked: @patient.specialty_ids.map(&:to_param)} ) do |f| %>
+    <%= f.check_box class: "sr-only" %>
+    <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+  <% end %>
+    <div class="form-group">
+        <%= f.submit "Save", class: "btn btn-success form-control" %>
+      </div>
+<% end %>

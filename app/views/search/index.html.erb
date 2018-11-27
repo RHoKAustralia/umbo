@@ -1,6 +1,7 @@
-<h1>Results</h1>
+<div class="search-results card-deck justify-content-center align-items-center flex-wrap">
 <% if @search != [] %>
   <% @search.each do |result| %>
+
     <%= render './layouts/userthumb', user: result %>
   <% end %>
 <% else %>
@@ -8,3 +9,4 @@
     No results found
   </p>
 <% end %>
+</div>

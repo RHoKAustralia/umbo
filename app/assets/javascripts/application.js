@@ -15,21 +15,34 @@
 //= require turbolinks
 //= require_tree .
 
+
+
 var ready = function() {
   $(".btn-blue-toggle").on("click", function(event) {
-    console.log($(this).hasClass('btn-outline-primary'));
-    if ($(this).hasClass('btn-outline-primary')) {
-      $(this).removeClass('btn-outline-primary');
-      $(this).addClass('btn-primary');
-    } else {
-      $(this).removeClass('btn-primary');
-      $(this).addClass('btn-outline-primary');
-    }
+    $(this).toggleClass('btn-outline-primary');
+    $(this).toggleClass('btn-primary');
   });
 }
 
-// $(function() {
-//   ready();
-// });
-
 $(document).on('turbolinks:load', ready);
+
+// $(document).on('turbolinks:load', () => {
+//     const updateButton = label => {
+//         const $label = $(label);
+
+//         const checkbox = $(`#${$label.attr("for")}`);
+//         const isChecked = checkbox.is(":checked");
+
+//         if (isChecked) {
+//             $label.removeClass("btn-primary");
+//             $label.addClass("btn-outline-primary");
+//         } else {
+//             $label.removeClass("btn-outline-primary");
+//             $label.addClass("btn-primary");
+//         }
+//     };
+
+//     $(".btn-blue-toggle").on("click", function(event) {
+//         updateButton(this);
+//     });
+// });
