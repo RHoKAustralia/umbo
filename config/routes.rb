@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'dashboard', to: 'pages#dashboard', as: 'dashboard'
   resources 'search', only: [:index]
-  # resources :appointments
   resources :patients
-  resources :therapists
+  resources :therapists do
+    resources :schedules
+    resources :appointments
+  end
 end

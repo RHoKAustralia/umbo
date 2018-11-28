@@ -30,9 +30,9 @@ specialties = [
 
 specialties.each do |hash|
   Specialty.create(
-  name: hash[:name],
-  category: hash[:category]
-)
+    name: hash[:name],
+    category: hash[:category]
+  )
 end
 
 # Create users
@@ -87,6 +87,49 @@ end
     )
   end
 end
+
+# puts "generating sessions"
+# # Select random user and listing
+# Therapist.all.each do |therapist|
+#   p therapist
+#   # therapist = Therapist.find(Therapist.pluck(:id).sample)
+#   date_range = (3.months.ago.to_date..3.months.from_now.to_date).to_a
+#   session_times = []
+#   date_range.each do |date|
+#     time1 = date.to_time + 9.hours
+#     times = [time1]
+#     32.times do |i|
+#       time1 += 15.minutes
+#       times << time1
+#     end
+#     2.times do
+#       time = times[0..-4].sample
+#       index = times.index(time)
+#       num_blocks = rand(1..4)
+#       length = num_blocks * 15
+#       time2 = time + length.minutes
+#       if times.index(time2) != index + num_blocks
+#         next
+#       end
+#       times.slice!(index, num_blocks)
+#       session_times << { time: time, length: length }
+#     end
+#   end
+
+#   session_times.each_with_index do |hash, i|
+#     time = hash[:time]
+#     length = hash[:length]
+#     Session.create(
+#       therapist_id: therapist.id,
+#       patient_id: therapist.patients[i % 10].id,
+#       date: time.to_date,
+#       start_time: time.strftime("%H:%M"),
+#       end_time: (time + length.minutes).strftime("%H:%M"),
+#       payment_date: time - 7.days,
+#       total_cost: length * 3 * 100
+#     )
+#   end
+# end
 
 # Set 2 easy to remember emails
 User.first.update(email: "patient@email.com")

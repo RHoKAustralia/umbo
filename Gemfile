@@ -54,6 +54,7 @@ gem "textacular", "~> 5.1"
 
 gem "faker", "~> 1.9"
 
+gem "simple_calendar", "~> 2.3"
 gem "mini_magick", "~> 4.9"
 gem "carrierwave", "~> 1.2"
 gem "carrierwave-aws", "~> 1.3"
