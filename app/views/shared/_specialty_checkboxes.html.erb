@@ -1,0 +1,45 @@
+<div class="specialty-checkboxes">
+
+  <% if show_ages %>
+    <div class="form-group">
+      <h3>Age Groups</h3>
+      <%= form.collection_check_boxes(:specialty_ids, Specialty.all.limit(2), :id, :name ) do |f| %>
+        <%= f.check_box class: "sr-only" %>
+        <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <h3>Medical condition</h3>
+    <%= form.collection_check_boxes(:specialty_ids, Specialty.all.limit(4).offset(2), :id, :name ) do |f| %>
+      <%= f.check_box class: "sr-only" %>
+      <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <h3>Speech</h3>
+    <%= form.collection_check_boxes(:specialty_ids, Specialty.all.limit(4).offset(6), :id, :name ) do |f| %>
+      <%= f.check_box class: "sr-only" %>
+      <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <h3>Motor & Sensory</h3>
+    <%= form.collection_check_boxes(:specialty_ids, Specialty.all.limit(3).offset(10), :id, :name ) do |f| %>
+      <%= f.check_box class: "sr-only" %>
+      <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <h3>Communication & Behaviour</h3>
+    <%= form.collection_check_boxes(:specialty_ids, Specialty.all.limit(3).offset(13), :id, :name ) do |f| %>
+      <%= f.check_box class: "sr-only" %>
+      <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
+    <% end%>
+  </div>
+
+</div>

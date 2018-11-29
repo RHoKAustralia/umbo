@@ -15,34 +15,42 @@
 //= require turbolinks
 //= require_tree .
 
+var toggleCheckboxLabelClass = function(){
+  if ($(this).is(":checked")) {
+    $("label[for='"+$(this).attr("id")+"']").removeClass("btn-outline-primary")
+    $("label[for='"+$(this).attr("id")+"']").addClass("btn-primary")
+  } else {
+    $("label[for='"+$(this).attr("id")+"']").removeClass("btn-primary")
+    $("label[for='"+$(this).attr("id")+"']").addClass("btn-outline-primary")
+  }
+};
 
+var readURL = function(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
 
-var ready = function() {
-  $(".btn-blue-toggle").on("click", function(event) {
-    $(this).toggleClass('btn-outline-primary');
-    $(this).toggleClass('btn-primary');
-  });
+    reader.onload = function (e) {
+      $('.profile-pic').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
 }
 
+var ready = function() {
+  // Add and remove styles on specialty checkboxes
+  $('.specialty-checkboxes input:checkbox').each(toggleCheckboxLabelClass);
+  $('.specialty-checkboxes input:checkbox').change(toggleCheckboxLabelClass);
+
+  // Used for profile image loading
+  $(".file-upload").on('change', function(){
+    readURL(this);
+  });
+
+  // Used for activating file input when label is clicked
+  $(".upload-button, #plus-icon").on('click', function() {
+     $(".file-upload").click();
+  });
+};
+
 $(document).on('turbolinks:load', ready);
-
-// $(document).on('turbolinks:load', () => {
-//     const updateButton = label => {
-//         const $label = $(label);
-
-//         const checkbox = $(`#${$label.attr("for")}`);
-//         const isChecked = checkbox.is(":checked");
-
-//         if (isChecked) {
-//             $label.removeClass("btn-primary");
-//             $label.addClass("btn-outline-primary");
-//         } else {
-//             $label.removeClass("btn-outline-primary");
-//             $label.addClass("btn-primary");
-//         }
-//     };
-
-//     $(".btn-blue-toggle").on("click", function(event) {
-//         updateButton(this);
-//     });
-// });

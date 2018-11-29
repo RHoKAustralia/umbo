@@ -1,54 +1,42 @@
-<div class="form-group">
+<%= form_with(model: patient, local: true) do |form| %>
+  <div class="form-group">
+    <%= form.label :first_name, class: "sr-only" %>
+    <%= form.text_field :first_name, autofocus: true, placeholder: "First Name", class: "form-control" %>
+  </div>
 
-      <%= form_with(model: @patient, local: true) do |f| %>
+  <div class="form-group">
+    <%= form.label :last_name, class: "sr-only" %>
+    <%= form.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
+  </div>
 
-  
-      <div class="form-group">
-        <%= f.label :first_name, class: "sr-only" %>
-        <%= f.text_field :first_name, autofocus: true, placeholder: "First Name", class: "form-control" %>
-      </div>
+  <div class="form-group">
+    <%= form.label :gender, class: "sr-only" %>
+    <%= form.select(:gender, [["male", 'male'],["female", 'female']],{}, {class: "form-control"}) %>
+  </div>
 
-      <div class="form-group">
-        <%= f.label :last_name, class: "sr-only" %>
-        <%= f.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
-      </div>
+  <div class="form-group">
+    <%= form.label :dob, class: "sr-only" %>
+    <%= form.date_field :dob, placeholder: "Date of birth", class: "form-control" %>
+  </div>
 
-      <div class="form-group">
-        <%= f.label :gender, class: "sr-only" %>
-        <%= f.select(:gender, [["male", 'male'],["female", 'female']],{}, {class: "form-control"}) %>
-      </div>
-      <div class="form-group">
-        <%= f.label :dob, class: "sr-only" %>
-        <%= f.date_field :dob, placeholder: "Date of birth", class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :ndis_status do%>
-        <p>NDIS approval</p>
-        <%end%>
+  <div class="form-group">
+    <%= form.label :ndis_status, "NDIS Approval" %>
+    <%= form.check_box :ndis_status, class: "" %>
+  </div>
 
-        <%= f.check_box :ndis_status, class: "" %>
+  <div class="form-group">
+    <%= form.label :ndis_number, class: "sr-only" %>
+    <%= form.number_field :ndis_number, placeholder: "NDIS Number", class: "form-control" %>
+  </div>
 
-      </div>
-       <div class="form-group">
-        <%= f.label :ndis_number, class: "sr-only" %>
-        <%= f.text_field :ndis_number, placeholder: "NDIS Number", class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :postcode, class: "sr-only" %>
-        <%= f.text_field :postcode, placeholder: "postcode", class: "form-control" %>
-      </div>
+  <div class="form-group">
+    <%= form.label :postcode, class: "sr-only" %>
+    <%= form.number_field :postcode, placeholder: "postcode", class: "form-control" %>
+  </div>
 
- <div class="form-group">
-        <%= f.submit "Sign up", class: "btn btn-success form-control" %>
-      </div>
+  <%= render './shared/specialty_checkboxes', form: form, user: patient, show_ages: false %>
 
-
-    <% end %>
-        
-      </div>
-
-
-
-
-
-
+  <div class="form-group">
+    <%= form.submit "Save", class: "btn btn-success form-control" %>
+  </div>
+<% end %>

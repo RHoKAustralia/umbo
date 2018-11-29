@@ -17,10 +17,6 @@ class TherapistsController < ApplicationController
 
   # GET /therapists/1/edit
   def edit
-    @specialties = Specialty.pluck(:name)
-    # if current_user.id != params[:id]
-    #   redirect_to root_path, notice: "You don't have permission to edit this User"
-    # end
   end
 
   def show
@@ -31,17 +27,10 @@ class TherapistsController < ApplicationController
   def create
     @therapist = Therapist.new(therapist_params)
     @therapist.user_id = current_user.id
-    saved = @therapist.save
-    specialties = params[:therapist][:specialties].delete_if { |v| v == "" }
-    specialties.each do |x|
-      therapist_specialties = TherapistSpecialty.new
-      therapist_specialties.therapist_id = @therapist.id
-      therapist_specialties.specialty_id = x
-      therapist_specialties.save
-    end
+    @therapist.specialty_ids = params[:therapist][:specialty_ids]
 
     respond_to do |format|
-      if saved
+      if @therapist.save
         format.html { redirect_to root_path, notice: "Therapist was successfully created." }
       else
         format.html { render :new }
@@ -52,17 +41,7 @@ class TherapistsController < ApplicationController
   # PATCH/PUT /therapists/1
   # PATCH/PUT /therapists/1.json
   def update
-    specialties = params[:therapist][:specialties].delete_if { |v| v == "" }
-    specialties.each do |x|
-      therapist_specialties = TherapistSpecialty.new
-      therapist_specialties.therapist_id = @therapist.id
-      therapist_specialties.specialty_id = x
-      begin
-        therapist_specialties.save
-      rescue ActiveRecord::RecordNotUnique => e
-        next
-      end
-    end
+    @therapist.specialty_ids = params[:therapist][:specialty_ids]
     respond_to do |format|
       if @therapist.update(therapist_params)
         format.html { redirect_to root_path, notice: "therapist was successfully updated." }
@@ -70,7 +49,6 @@ class TherapistsController < ApplicationController
         format.html { render :edit }
       end
     end
-
   end
 
   private
@@ -90,6 +68,6 @@ class TherapistsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def therapist_params
-    params.require(:therapist).permit(:about_me, :hourly_rate, :profile_image, :user_id, :specialties)
+    params.require(:therapist).permit(:about_me, :hourly_rate, :profile_image, :user_id, :specialty_ids)
   end
 end

@@ -1,37 +1,25 @@
 <%= form_with(model: therapist, local: true) do |form| %>
-  <div>
-    <%= form.label :about_me  %>
-    <p><%= form.text_area :about_me, class: "form-control" %></p>
-  </div>
-  <div>
-    <%= form.file_field :profile_image %>
+
+  <div class="form-group">
+    <%= form.label :profile_image, class: "sr-only" %>
+    <div class="avatar-wrapper rounded-circle">
+      <%= image_tag @therapist.profile_image.url, class:"profile-pic" %>
+      <div class="upload-button">
+      </div>
+      <%= form.file_field :profile_image, class: "file-upload" %>
+    </div>
+    <div class="d-flex justify-content-center height-0">
+      <span id="plus-icon" class="text-success border-success"></span>
+    </div>
   </div>
 
-  <h3>Age Groups</h3>
-  <%= form.collection_check_boxes(:specialties, Specialty.all.limit(2), :id, :name ) do |f| %>
-    <%= f.check_box class: "sr-only" %>
-    <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
-  <% end %>
-  <h3>Medical condition</h3>
-  <%= form.collection_check_boxes(:specialties, Specialty.all.limit(4).offset(2), :id, :name ) do |f| %>
-    <%= f.check_box class: "sr-only" %>
-    <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
-  <% end %>
-  <h3>Speech</h3>
-  <%= form.collection_check_boxes(:specialties, Specialty.all.limit(4).offset(6), :id, :name ) do |f| %>
-    <%= f.check_box class: "sr-only" %>
-    <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
-  <% end %>
-  <h3>Motor & Sensory</h3>
-  <%= form.collection_check_boxes(:specialties, Specialty.all.limit(3).offset(10), :id, :name ) do |f| %>
-    <%= f.check_box class: "sr-only" %>
-    <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
-  <% end %>
-  <h3>Communication & Behaviour</h3>
-  <%= form.collection_check_boxes(:specialties, Specialty.all.limit(3).offset(13), :id, :name ) do |f| %>
-    <%= f.check_box class: "sr-only" %>
-    <%= f.label class: "btn btn-sm btn-outline-primary btn-blue-toggle" %>
-  <% end%>
+  <div class="form-group">
+    <%= form.label :about_me  %>
+    <p><%= form.text_area :about_me, class: "form-control", rows: 5 %></p>
+  </div>
+
+  <%= render './shared/specialty_checkboxes', form: form, user: therapist, show_ages: true %>
+
   <div class="form-group">
     <%= form.submit "Update", class: "btn btn-success" %>
   </div>

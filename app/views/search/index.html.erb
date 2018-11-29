@@ -1,12 +1,11 @@
 <div class="search-results card-deck justify-content-center align-items-center flex-wrap">
-<% if @search != [] %>
-  <% @search.each do |result| %>
-
-    <%= render './layouts/userthumb', user: result %>
+  <% if @search != [] %>
+    <% @search.each do |result| %>
+      <%= render './shared/userthumb', user: result %>
+    <% end %>
+  <% else %>
+    <p>
+      No results found
+    </p>
   <% end %>
-<% else %>
-  <p>
-    No results found
-  </p>
-<% end %>
 </div>

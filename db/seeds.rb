@@ -16,7 +16,7 @@ specialties = [
   { name: 'Cerebral Palsy', category: 1},
   { name: 'Developmental Delays', category: 1},
   { name: 'Down Syndrome', category: 1},
-  { name: 'speech', category: 2 },
+  { name: 'Speech', category: 2 },
   { name: 'Language & Development', category: 2},
   { name: 'Stuttering', category: 2},
   { name: 'Voice', category: 2},
