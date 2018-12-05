@@ -2,6 +2,9 @@
 
 [![Build Status](https://travis-ci.org/RHoKAustralia/umbo.svg?branch=master)](https://travis-ci.org/RHoKAustralia/umbo)
 
+Heroku: https://umbo.herokuapp.com/
+AWS: http://umbo-env.ar7w6bz2vy.ap-southeast-2.elasticbeanstalk.com/
+
 ### Random Hacks of Kindness
 
 ## Requirements:
