@@ -3,7 +3,11 @@
   <div class="form-group">
     <%= form.label :profile_image, class: "sr-only" %>
     <div class="avatar-wrapper rounded-circle">
-      <%= image_tag @therapist.profile_image.url, class:"profile-pic" %>
+      <% unless @therapist.profile_image? %>
+        <%= image_tag asset_path("noimage.png"), class: "profile-pic", alt: "blank profile picture"%>
+      <% else %>
+        <%= image_tag @therapist.profile_image.url, class:"profile-pic", alt: "profile picture" %>
+      <% end %>
       <div class="upload-button">
       </div>
       <%= form.file_field :profile_image, class: "file-upload" %>
