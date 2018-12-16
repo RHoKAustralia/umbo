@@ -52,6 +52,7 @@ class PatientsController < ApplicationController
   end
 
   def dashboard
+    @patient = current_user.patient
   end
 
   private
