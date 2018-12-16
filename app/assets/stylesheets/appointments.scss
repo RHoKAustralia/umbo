@@ -1,0 +1,40 @@
+.calendar-heading {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+
+  .calendar-title {
+    font-weight: 500;
+    margin: 0 8px;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+td a {
+  color: $umbo_text;
+
+  &:hover {
+    color: $umbo_text;
+  }
+}
+
+td.day {
+  padding: 2px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+td .available {
+  padding: 0.75em;
+  background-color: lightgreen;
+}
+
+td .unavailable {
+  padding: 0.75em;
+  background-color: lightcoral;
+}

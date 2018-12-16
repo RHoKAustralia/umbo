@@ -1,0 +1,24 @@
+<div class="container mx-auto">
+
+  <h1 class="text-center mb-4">Please Select a Time</h1>
+
+  <table class="table table-bordered table-responsive">
+    <% @times2DArray.each do |times1DArray| %>
+      <tr>
+        <% times1DArray.each do |time| %>
+          <td class="p-1">
+            <% if @unavailable_times.include?(time) || time < Time.now %>
+              <div class="unavailable">
+            <% else %>
+              <div class="available">
+            <%end%>
+              <%= link_to new_therapist_appointment_path(@therapist, datetime: time) do %>
+                <%= time.strftime("%I:%M%p") %>
+              <% end %>
+            </div>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>

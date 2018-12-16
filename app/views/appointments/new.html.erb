@@ -1,5 +1,94 @@
-<h1>New Appointment</h1>
+<div class="container mx-auto">
 
-<%= render 'form', appointment: @appointment %>
+  <h1 class="text-center mb-4">Please Select a Time</h1>
 
-<%= link_to 'Back', appointments_path %>
+  <table class="table table-bordered">
+    <tr>
+      <td>8:00am</td>
+      <td>9:00am</td>
+      <td>10:00am</td>
+      <td>11:00am</td>
+      <td>12:00pm</td>
+      <td>1:00pm</td>
+      <td>2:00pm</td>
+      <td>3:00pm</td>
+      <td>4:00pm</td>
+      <td>5:00pm</td>
+      <td>6:00pm</td>
+      <td>7:00pm</td>
+    </tr>
+    <tr>
+      <td>8:15am</td>
+      <td>9:15am</td>
+      <td>10:15am</td>
+      <td>11:15am</td>
+      <td>12:15pm</td>
+      <td>1:15pm</td>
+      <td>2:15pm</td>
+      <td>3:15pm</td>
+      <td>4:15pm</td>
+      <td>5:15pm</td>
+      <td>6:15pm</td>
+      <td>7:15pm</td>
+    </tr>
+    <tr>
+      <td>8:30am</td>
+      <td>9:30am</td>
+      <td>10:30am</td>
+      <td>11:30am</td>
+      <td>12:30pm</td>
+      <td>1:30pm</td>
+      <td>2:30pm</td>
+      <td>3:30pm</td>
+      <td>4:30pm</td>
+      <td>5:30pm</td>
+      <td>6:30pm</td>
+      <td>7:30pm</td>
+    </tr>
+    <tr>
+      <td>8:45am</td>
+      <td>9:45am</td>
+      <td>10:45am</td>
+      <td>11:45am</td>
+      <td>12:45pm</td>
+      <td>1:45pm</td>
+      <td>2:45pm</td>
+      <td>3:45pm</td>
+      <td>4:45pm</td>
+      <td>5:45pm</td>
+      <td>6:45pm</td>
+      <td>7:45pm</td>
+    </tr>
+  </table>
+
+    <!--
+    <div class="col-lg">
+      <h3 class="text-center mb-4">Check Available Times</h3>
+      <p class="text-center mb-4">
+        <span class="available-time">Available Time</span>
+        <span class="unavailable-time">Unavailable Time</span>
+      </p>
+      <%= form_with url: new_therapist_appointment_path(@therapist), method: :get, local: true, class: "check-date-form" do |form| %>
+        <%= form.fields_for :appointment do |t| %>
+          <div class="form-group">
+            <%= t.label :start_time %>
+            <%= t.time_field :start_time, value: params[:appointment][:start_time] %>
+          </div>
+          <div class="form-group">
+            <%= t.label :end_time %>
+            <%= t.time_field :end_time, value: params[:appointment][:end_time] %>
+          </div>
+        <% end %>
+
+        <div class="actions">
+          <%= form.submit 'Check Times', class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+    -->
+  </div>
+</div>
+
+<%#= render 'form', appointment: @appointment %>
+
+<%#= link_to 'Back', appointments_path %>

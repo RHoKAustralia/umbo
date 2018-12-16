@@ -12,9 +12,32 @@ class AppointmentsController < ApplicationController
   def show
   end
 
+  def date_select
+    @unavailable_days = [];
+    # @unavailable_days = UnavailableDay.where(listing_id: @listing.id).pluck(:day)
+    @therapist = Therapist.find(params[:therapist_id])
+  end
+
+  def time_select
+    next_time = params['date'].to_time + 8.hours
+    @times2DArray = [[next_time]]
+    10.times do
+      next_time += 1.hour
+      @times2DArray[0] << next_time
+    end
+    (1..3).each do |i|
+      @times2DArray[i] = @times2DArray[i-1].map { |t| t + 15.minutes }
+    end
+    @unavailable_times = [];
+    # @unavailable_days = UnavailableDay.where(listing_id: @listing.id).pluck(:day)
+    @therapist = Therapist.find(params[:therapist_id])
+  end
+
   # GET /appointments/new
   def new
+    @therapist = Therapist.find(params[:therapist_id])
     @appointment = Appointment.new
+    params[:appointment] = Hash.new
   end
 
   # GET /appointments/1/edit
