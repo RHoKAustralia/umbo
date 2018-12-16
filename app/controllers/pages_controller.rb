@@ -5,6 +5,11 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    if current_user.patient?
+      @patient = current_user.patient
+    elsif current_user.therapist?
+      @therapist = current_user.therapist
+    end
   end
 
   private
