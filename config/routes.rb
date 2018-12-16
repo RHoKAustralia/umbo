@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post "create_therapist_user", to: 'admin#create_therapist_user', as: 'create_therapist_user'
   get "new_therapist_user", to: 'admin#new_therapist_user', as: 'new_therapist_user'
   root 'pages#home'
-  get 'dashboard', to: 'pages#dashboard', as: 'dashboard'
+  get 'dashboard', to: 'patients#dashboard', as: 'dashboard'
   resources 'search', only: [:index]
   resources :patients
   resources :therapists do

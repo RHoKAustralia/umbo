@@ -1,0 +1,46 @@
+<div class="patient__container">
+<section class="patient__profile">
+
+<%= image_tag 'people.png', class: "rounded-circle" %>
+<div class="patient__profile--size">
+<h1> <%=@patient.first_name + " " + @patient.last_name%>  </h1>
+<p class="details"> <%=@patient.age%> years old </p>
+<div class="patient__profile--btns">
+    <%=link_to edit_patient_path(@patient.id) do%>
+    <button class="btn-sm btn-primary"> Edit Profile </button>
+    <%end %>
+<%=link_to '#' do%>
+   <button class="btn-sm btn-primary"> + Add Note For Therapist </button>
+   <%end%>
+
+</div>
+</section>
+
+<section class="patient__section">
+<span class="patient__section--name"> Sessions   </span>
+
+</section>
+<div class="patient__section--container">
+<section class="patient__section--small ">
+<span class="patient__section--name"> Updates from Therapist</span>
+    
+</section>
+<div class="patient__section--noborder patient__section--small">
+<section class="patient__section--noborder patient__section--small">
+<span class="patient__section--name"> Badges </span>
+</section>
+<section class="patient__section--noborder patient__section--small">
+<span class="patient__section--name"> Progress  </span>
+</section>
+</div>
+
+</div>
+<div class="patient__section--container">
+<section class="patient__section--small">
+<span class="patient__section--name"> Updates from Parent   </span>
+</section>
+<section class="patient__section--small">
+<span class="patient__section--name"> My Notes  </span>
+</section>
+</div>
+</div>
