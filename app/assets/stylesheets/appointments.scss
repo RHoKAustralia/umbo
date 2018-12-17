@@ -30,13 +30,13 @@ td.day {
 }
 
 td .available,
-#time_availability .available {
+.available-time-grid.available {
   padding: 0.75em;
   background-color: lightgreen;
 }
 
 td .unavailable,
-#time_availability .unavailable {
+.available-time-grid.unavailable {
   padding: 0.75em;
   background-color: lightcoral;
 }

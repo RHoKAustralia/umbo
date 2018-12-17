@@ -6,10 +6,9 @@ class TherapistFlowsTest < ActionDispatch::IntegrationTest
     @email = user(:TherapistUser).email
   end
 
-  test "log in takes to ??? if missing" do
+  test "log in takes to new therapist profile page if missing" do
     log_in_and_follow(@email_not_set_up)
-    # FIXME: this should probably take therapist to some set up page
-    assert_redirected_to dashboard_path
+    assert_redirected_to new_therapist_path
   end
 
   test "log in takes to dashboard" do
