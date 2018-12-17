@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_25_001706) do
+ActiveRecord::Schema.define(version: 2018_11_25_205053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2018_11_25_001706) do
     t.bigint "specialty_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["patient_id", "specialty_id"], name: "by_specialty_and_patient", unique: true
     t.index ["patient_id"], name: "index_patient_specialties_on_patient_id"
     t.index ["specialty_id"], name: "index_patient_specialties_on_specialty_id"
   end
@@ -90,6 +91,7 @@ ActiveRecord::Schema.define(version: 2018_11_25_001706) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["specialty_id"], name: "index_therapist_specialties_on_specialty_id"
+    t.index ["therapist_id", "specialty_id"], name: "by_specialty_and_therapist", unique: true
     t.index ["therapist_id"], name: "index_therapist_specialties_on_therapist_id"
   end
 

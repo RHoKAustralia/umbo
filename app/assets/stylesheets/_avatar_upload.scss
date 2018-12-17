@@ -1,0 +1,57 @@
+.avatar-wrapper{
+	position: relative;
+	height: 200px;
+	width: 200px;
+	margin: auto;
+	// border-radius: 50%;
+  overflow: hidden;
+	// box-shadow: 1px 1px 15px -5px black;
+	transition: all .3s ease;
+	&:hover{
+		cursor: pointer;
+	}
+	.profile-pic {
+    height: 100%;
+		width: 100%;
+		transition: all .3s ease;
+		&:after{
+			top: 0; left: 0;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+		}
+	}
+	.upload-button {
+		position: absolute;
+		top: 0; left: 0;
+		height: 100%;
+		width: 100%;
+	}
+
+	input {
+		display: none;
+	}
+}
+
+#plus-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid;
+  font-size: 26px;
+  position: relative;
+  top: -25px;
+  left: 75px;
+  z-index: 999;
+
+  &:before {
+    content: '\FF0B';
+	}
+
+	&:hover {
+		cursor: pointer;
+	}
+}

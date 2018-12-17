@@ -1,25 +1,15 @@
-<%= form_with(model: session, local: true) do |form| %>
-  <% if session.errors.any? %>
+<%= form_with(model: appointment, local: true) do |form| %>
+  <% if appointment.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(session.errors.count, "error") %> prohibited this session from being saved:</h2>
+      <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
 
       <ul>
-      <% session.errors.full_messages.each do |message| %>
+      <% appointment.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :patient_id %>
-    <%= form.text_field :patient_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :therapist_id %>
-    <%= form.text_field :therapist_id %>
-  </div>
 
   <div class="field">
     <%= form.label :date %>
@@ -34,16 +24,6 @@
   <div class="field">
     <%= form.label :end_time %>
     <%= form.time_select :end_time %>
-  </div>
-
-  <div class="field">
-    <%= form.label :payment_date %>
-    <%= form.date_select :payment_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :total_cost %>
-    <%= form.text_field :total_cost %>
   </div>
 
   <div class="actions">
