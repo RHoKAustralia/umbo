@@ -19,9 +19,13 @@
       <li class="nav-item my-auto">
         <%= link_to "Find a Therapist", search_index_path, class: "nav-link my-auto" %>
       </li>
+        <li class="nav-item my-auto">
+          <%= link_to "Dashboard", dashboard_path, class: "nav-link my-auto"%>
+        </li>
       <li class="nav-item my-auto">
         <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link my-auto" %>
       </li>
+      
       <% if current_user.patient? and !current_user.patient.nil?%>
         <li class="nav-item my-auto">
           <%= link_to edit_patient_path(current_user.patient.id), class: "navbar-brand" do %>

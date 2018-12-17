@@ -5,6 +5,11 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    if current_user.patient?
+      @patient = current_user.patient
+    elsif current_user.therapist?
+      @therapist = current_user.therapist
+    end
   end
 
   private
@@ -19,9 +24,5 @@ class PagesController < ApplicationController
     elsif user_signed_in? and current_user.therapist?
       redirect_to dashboard_path
     end
-  end
-
-  def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :phone)
   end
 end
