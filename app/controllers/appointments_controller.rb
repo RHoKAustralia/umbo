@@ -46,12 +46,10 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/new
   def new
-    p params
     start_time = parse_time_params(params[:appointment], :start_time)
     @duration = params[:appointment][:duration].to_i
     end_time = start_time + @duration.minutes
     date = params[:appointment][:date].to_date
-    byebug
     @therapist = Therapist.find(params[:therapist_id])
     @appointment = Appointment.new(
       date: date,

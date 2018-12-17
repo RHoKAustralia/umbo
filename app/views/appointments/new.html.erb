@@ -2,7 +2,7 @@
   <h1>Confirm Appointment Details</h1>
 
   <p>Therapist: <%= @therapist.user.full_name %></p>
-  <p>Date: <%= @appointment.date %></p>
+  <p>Date: <%= @appointment.date.strftime("%d/%m/%Y") %></p>
   <p>Start Time: <%= @appointment.start_time.strftime("%I:%M%p") %></p>
   <p>End Time: <%= @appointment.end_time.strftime("%I:%M%p") %></p>
   <p>Duration: <%= @duration %> minutes</p>
