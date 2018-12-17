@@ -1,29 +1,30 @@
-<div class="container">
-  <div class="d-flex justify-content-between">
+<div class="container mx-auto">
+  <div class="d-flex justify-content-start align-items-center">
+    <% if @therapist.profile_image? %>
+      <%= image_tag @therapist.profile_image_url, class: "profile-image" %>
+    <% end%>
+    <h1 class="ml-4 my-0"><%= @therapist.user.first_name %> <%= @therapist.user.last_name %></h1>
+    <div class="ml-auto my-0 d-flex flex-column align-self-stretch justify-content-center" id="availability">
+      <a href="mailto:<%= @therapist.user.email %>" class="btn btn-primary btn-lg my-2">Contact</a>
+      <a href="#" class="btn btn-success btn-lg my-2">Book Appointment</a>
+    </div>
+  </div>
 
-    <div class="container">
-      <% if @therapist.profile_image? %>
-        <%= image_tag @therapist.profile_image_url, class: "profile-image" %>
-      <% end%>
-      <h1 class="profile-head"><%= @therapist.user.first_name %> <%= @therapist.user.last_name %></h1>
-      <div class="d-flex bd-highlight float-right" id="availability">
-        <a href="mailto:<%= @therapist.user.email %>" class="btn btn-primary btn-lg">Contact</a>
+  <div class="my-4">
+    <h3>About Me</h3>
+    <div class="card">
+      <div class="card-body">
+        <%= @therapist.about_me %>
       </div>
+    </div>
   </div>
-</div>
 
-<div class="container">
-  <h3>About Me</h3>
-  <div class="card">
-    <div class="card-body">
-      <%=  @therapist.about_me %>
-    </div>
+  <div>
+    <h3>Areas of Interest</h3>
+    <% @therapist.specialties.each do |specialty| %>
+      <div class= "btn btn-sm btn-outline-primary">
+        <%= specialty.name %>
+      </div>
+    <% end %>
   </div>
 </div>
-<div class="container">
-  <h3>Areas of Interest</h3>
-  <% @therapist.specialties.each do |specialty| %>
-    <div class= "btn btn-sm btn-outline-primary">
-      <%= specialty.name %>
-    </div>
-  <% end %>
