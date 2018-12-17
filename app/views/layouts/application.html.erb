@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet">
   </head>
 
-  <body>
+  <body class="<%= "#{controller_name}-#{action_name}" %>">
     <%= render 'layouts/nav' %>
     <% if notice && !notice.empty? %>
       <div class="alert alert-success alert-dismissable text-center mb-0">

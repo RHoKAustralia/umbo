@@ -29,12 +29,14 @@ td.day {
   }
 }
 
-td .available {
+td .available,
+#time_availability .available {
   padding: 0.75em;
   background-color: lightgreen;
 }
 
-td .unavailable {
+td .unavailable,
+#time_availability .unavailable {
   padding: 0.75em;
   background-color: lightcoral;
 }

@@ -2,17 +2,37 @@
 
   <h1 class="text-center mb-4">Please Select a Time</h1>
 
+  <%= form_with model:@appointment, url: new_therapist_appointment_path(@therapist), method: :get, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :date %>
+      <%= f.date_field :date, value: @date, id: 'date_select' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :start_time %>
+      <%= f.time_select :start_time, minute_step: 15, ampm: true, start_hour: 8, end_hour: 18 %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label 'Duration' %>
+      <%= f.select 'duration', options_for_select([ 15, 30, 45, 60 ], 15) %>
+      <span>minutes</span>
+    </div>
+    <%= f.submit 'Continue', class: "btn btn-primary" %>
+  <% end %>
+
+  <h2 class="my-4">Availability</h2>
+  <!--
   <table class="table table-bordered table-responsive">
     <% @times2DArray.each do |times1DArray| %>
       <tr>
         <% times1DArray.each do |time| %>
-          <td class="p-1">
+          <td class="p-1" data-time="<%= time %>">
             <% if @unavailable_times.include?(time) || time < Time.now %>
               <div class="unavailable">
             <% else %>
               <div class="available">
             <%end%>
-              <%= link_to new_therapist_appointment_path(@therapist, datetime: time) do %>
+              <%= link_to therapist_time_select_path(@therapist, date: @date, start_time: time.strftime("%H:%M")) do %>
                 <%= time.strftime("%I:%M%p") %>
               <% end %>
             </div>
@@ -21,4 +41,18 @@
       </tr>
     <% end %>
   </table>
+  -->
+  <div id="time_availability" class="d-flex flex-column flex-wrap">
+    <% @timesArray.each do |time| %>
+      <% if @unavailable_times.include?(time) || time < Time.now %>
+        <div class="unavailable m-1" style="width: 100px; height: 50px;">
+      <% else %>
+        <div class="available m-1" style="width: 100px; height: 50px;">
+      <%end%>
+        <%= link_to therapist_time_select_path(@therapist, date: @date, start_time: time.strftime("%H:%M")) do %>
+          <%= time.strftime("%I:%M%p") %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -1,4 +1,4 @@
-<%= form_with(model: appointment, local: true) do |form| %>
+<%= form_with(model: appointment, url: therapist_appointments_path(therapist), local: true) do |form| %>
   <% if appointment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
@@ -12,18 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :date %>
-    <%= form.date_select :date %>
+    <%= form.date_field :date, hidden: true %>
   </div>
 
   <div class="field">
-    <%= form.label :start_time %>
-    <%= form.time_select :start_time %>
+    <%= form.time_field :start_time, hidden: true %>
   </div>
 
   <div class="field">
-    <%= form.label :end_time %>
-    <%= form.time_select :end_time %>
+    <%= form.time_field :end_time, hidden: true %>
   </div>
 
   <div class="actions">
