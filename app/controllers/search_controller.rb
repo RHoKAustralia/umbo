@@ -16,7 +16,7 @@ class SearchController < ApplicationController
     end
 
     @specialties_intercept.sort_by! {|obj| obj.count}
-    @specialties_intercept.uniq!.reverse!
+    @specialties_intercept.uniq!.reverse! unless @specialties.nil?
     
     # Retrieve therapists without count to view
     @search = []
