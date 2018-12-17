@@ -2,38 +2,44 @@ class SearchController < ApplicationController
 
   def index
     #Find therapists that match specialty of patient
-    if !current_user.patient.specialties.empty?
-      @specialties_array = [];
-      @specialties_params = current_user.patient.specialties.includes(therapists: :user)
-      @specialties_params.each do |x|
-        @specialties_array << x.therapists
-      end
-
-      # Sort therapists by most matching specialties
-      @specialties_intercept = []
-      @specialties_array.flatten.each do |x|
-        @specialties_intercept << {therapist: x, count: @specialties_array.flatten.count(x)}
-      end
-
-      @specialties_intercept.sort_by! {|obj| obj.count}
-      @specialties_intercept.uniq!.reverse! unless @specialties_intercept.nil?
-      
-      # Retrieve therapists without count to view
-      @search = []
-      @specialties_intercept.each do |x|
-        @search << x[:therapist]
-      end
+    @results = []
+    if current_user.admin? || current_user.therapist?
+      @results = Therapist.all
     else
-      @search = []
+      if !current_user.patient.specialties.empty?
+        @matching_therapists = []
+        @patient_specialties = current_user.patient.specialties.includes(therapists: :user)
+        @patient_specialties.each do |specialty|
+          @matching_therapists << specialty.therapists
+        end
+        @matching_therapists.flatten!
+
+        # Sort therapists by most matching specialties
+        @match_count_hashes = []
+        @matching_therapists.each do |therapist|
+          @match_count_hashes << { therapist: therapist, count: @matching_therapists.count(therapist) }
+        end
+
+        unless @match_count_hashes.empty?
+          @match_count_hashes.uniq!
+          @match_count_hashes.sort_by! {|hash| hash.count}
+          @match_count_hashes.reverse!
+
+          # Retrieve therapists without count to view
+          @match_count_hashes.each do |hash|
+            @results << hash[:therapist]
+          end
+        end
+      end
     end
-    
+
     #TODO: Pagination
     # @limit = 100
     # @page = params[:page].to_i
-    # @page ||= 0    
+    # @page ||= 0
     # offset = (@page * @limit)
-    # @length = @search != nil ? @search.length : 0 
-    # @search = @search != nil ? @search.limit(@limit).offset(offset) : [] 
+    # @length = @results != nil ? @results.length : 0
+    # @results = @results != nil ? @results.limit(@limit).offset(offset) : []
   end
 
 end
