@@ -6,7 +6,8 @@
     <h1 class="ml-4 my-0"><%= @therapist.user.first_name %> <%= @therapist.user.last_name %></h1>
     <div class="ml-auto my-0 d-flex flex-column align-self-stretch justify-content-center" id="availability">
       <a href="mailto:<%= @therapist.user.email %>" class="btn btn-primary btn-lg my-2">Contact</a>
-      <a href="#" class="btn btn-success btn-lg my-2">Book Appointment</a>
+      <%= link_to 'Book Appointment', therapist_date_select_path(@therapist.id), class: "btn btn-success btn-lg my-2" %>
+      <!--<a href="#" class="btn btn-success btn-lg my-2">Book Appointment</a>-->
     </div>
   </div>
 
