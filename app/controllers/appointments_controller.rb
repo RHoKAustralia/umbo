@@ -29,9 +29,9 @@ class AppointmentsController < ApplicationController
     (1..3).each do |i|
       @times2DArray[i] = @times2DArray[i-1].map { |t| t + 15.minutes }
     end
-    next_time = @date.to_time + 8.hours
+    next_time = @date.to_time
     @timesArray = [next_time]
-    43.times do
+    95.times do
       next_time += 15.minutes
       @timesArray << next_time
     end

@@ -40,3 +40,18 @@ td .unavailable,
   padding: 0.75em;
   background-color: lightcoral;
 }
+
+.available-time-grid {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 1175px;
+  max-width: 90vw;
+  height: 480px;
+  margin: 0 auto;
+  overflow-x: scroll;
+
+  a {
+    color: black;
+  }
+}
