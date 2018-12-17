@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   get "new_therapist_user", to: 'pages#new_therapist_user', as: 'new_therapist_user'
   root 'pages#home'
   get 'dashboard', to: 'pages#dashboard', as: 'dashboard'
-  resources 'search', only: [:index]
+  resources 'search', only: [:index, :filter]
+  get 'advanced_search', to: 'search#filter'
   # resources :sessions, as: :appointments
   resources :patients
   resources :therapists

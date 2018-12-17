@@ -33,7 +33,7 @@ class PatientsController < ApplicationController
     end
     respond_to do |format|
       if saved
-        format.html { redirect_to root_path, notice: "patient was successfully created." }
+        format.html { redirect_to root_path, notice: "Patient was successfully created." }
       else
         format.html { render :new }
       end
