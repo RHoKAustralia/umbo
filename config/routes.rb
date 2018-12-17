@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :patients
   resources :therapists do
     resources :schedules
+    get 'appointments/date_select', to: 'appointments#date_select', as: 'date_select'
+    get 'appointments/time_select', to: 'appointments#time_select', as: 'time_select'
     resources :appointments
   end
 end

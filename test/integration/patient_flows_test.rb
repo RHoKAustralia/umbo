@@ -23,5 +23,9 @@ class PatientFlowsTest < ActionDispatch::IntegrationTest
   end
 
   # TODO: add a test for user logging in with @email once that handling is in
+  test "login takes to dashboard if therapist exists" do
+    log_in_and_follow(@email)
+    assert_redirected_to dashboard_path
+  end
 
 end

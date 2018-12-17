@@ -51,6 +51,18 @@ var ready = function() {
   $(".upload-button, #plus-icon").on('click', function() {
      $(".file-upload").click();
   });
+
+  $('.appointments-time_select input[type="date"]').on('change', function() {
+    let date = $(this).val();
+    let search_string = `?date=${date}`;
+    let urlParams = new URLSearchParams(location.search);
+    if (urlParams.has('start_time')) {
+      let time = urlParams.get('start_time');
+      search_string += `&start_time=${time}`;
+    }
+    window.location.search = search_string;
+  });
+
 };
 
 $(document).on('turbolinks:load', ready);

@@ -8,6 +8,10 @@ class User < ApplicationRecord
 
   enum role: ['admin', 'therapist', 'patient']
 
+  def full_name
+    "#{self.first_name} #{self.last_name}".titleize
+  end
+
   protected
 
   def configure_permitted_parameters
