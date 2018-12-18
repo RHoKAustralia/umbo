@@ -43,7 +43,7 @@ var ready = function() {
   $('.specialty-checkboxes input:checkbox').change(toggleCheckboxLabelClass);
 
   // Used for profile image loading
-  $(".file-upload").on('change', function(){
+  $(".file-upload").on('change', function() {
     readURL(this);
   });
 
@@ -55,21 +55,21 @@ var ready = function() {
   $('.appointments-time_select input[type="date"]').on('change', function() {
     var new_date = $(this).val();
     var search_string = '?date=' + new_date;
-    var queryArray = location.search.slice(1,).split('&');
-    var queryHash = {};
-    for (var i = 0; i < queryArray.length; i++) {
-      var arr = queryArray[i].split("=");
-      queryHash[arr[0]] = arr[1];
-    }
-    if (queryHash.hasOwnProperty('start_time')) {
-      var time = queryHash['start_time'];
-      search_string += "&start_time=" + time;
-    }
-    // let urlParams = new URLSearchParams(location.search);
-    // if (urlParams.has('start_time')) {
-    //   let time = urlParams.get('start_time');
-    //   search_string += `&start_time=${time}`;
+    // var queryArray = location.search.slice(1,).split('&');
+    // var queryHash = {};
+    // for (var i = 0; i < queryArray.length; i++) {
+    //   var arr = queryArray[i].split("=");
+    //   queryHash[arr[0]] = arr[1];
     // }
+    // if (queryHash.hasOwnProperty('start_time')) {
+    //   var time = queryHash['start_time'];
+    //   search_string += "&start_time=" + time;
+    // }
+    let urlParams = new URLSearchParams(location.search);
+    if (urlParams.has('start_time')) {
+      let time = urlParams.get('start_time');
+      search_string += `&start_time=${time}`;
+    }
     window.location.search = search_string;
   });
 
