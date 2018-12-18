@@ -63,7 +63,7 @@ var ready = function() {
     }
     if (queryHash.hasOwnProperty('start_time')) {
       var time = queryHash['start_time'];
-      search_string += `&start_time=${time}`;
+      search_string += "&start_time=" + time;
     }
     // let urlParams = new URLSearchParams(location.search);
     // if (urlParams.has('start_time')) {
