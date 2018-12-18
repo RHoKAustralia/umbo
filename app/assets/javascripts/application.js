@@ -53,16 +53,16 @@ var ready = function() {
   });
 
   $('.appointments-time_select input[type="date"]').on('change', function() {
-    let new_date = $(this).val();
-    let search_string = `?date=${new_date}`;
-    let queryArray = location.search.slice(1,).split('&');
-    let queryHash = {};
-    for (let i = 0; i < queryArray.length; i++) {
-      let arr = queryArray[i].split("=");
+    var new_date = $(this).val();
+    var search_string = `?date=${new_date}`;
+    var queryArray = location.search.slice(1,).split('&');
+    var queryHash = {};
+    for (var i = 0; i < queryArray.length; i++) {
+      var arr = queryArray[i].split("=");
       queryHash[arr[0]] = arr[1];
     }
     if (queryHash.hasOwnProperty('start_time')) {
-      let time = queryHash['start_time'];
+      var time = queryHash['start_time'];
       search_string += `&start_time=${time}`;
     }
     // let urlParams = new URLSearchParams(location.search);
