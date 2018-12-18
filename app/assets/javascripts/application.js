@@ -54,7 +54,7 @@ var ready = function() {
 
   $('.appointments-time_select input[type="date"]').on('change', function() {
     var new_date = $(this).val();
-    var search_string = `?date=${new_date}`;
+    var search_string = '?date=' + new_date;
     var queryArray = location.search.slice(1,).split('&');
     var queryHash = {};
     for (var i = 0; i < queryArray.length; i++) {
