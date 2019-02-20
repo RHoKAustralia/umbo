@@ -25,6 +25,7 @@ class PatientsController < ApplicationController
     @patient = Patient.new(patient_params)
     @patient.user_id = current_user.id
     @patient.specialty_ids = params[:patient][:specialty_ids]
+    saved = @patient.save
     respond_to do |format|
       if saved
         format.html { redirect_to root_path, notice: "Patient was successfully created." }
